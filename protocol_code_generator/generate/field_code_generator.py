@@ -1,4 +1,4 @@
-from collections import namedtuple
+from html import escape
 from protocol_code_generator.generate.code_block import CodeBlock
 from protocol_code_generator.generate.object_code_generator import FieldData
 from protocol_code_generator.type.basic_type import BasicType
@@ -13,19 +13,6 @@ from protocol_code_generator.type.string_type import StringType
 from protocol_code_generator.type.struct_type import StructType
 from protocol_code_generator.util.docstring_utils import generate_docstring
 from protocol_code_generator.util.number_utils import try_parse_int
-
-DeprecatedField = namedtuple(
-    "DeprecatedField", ["type_name", "old_field_name", "new_field_name", "since"]
-)
-
-DEPRECATED_FIELDS = []
-
-
-def get_deprecated_field(type_name, field_name):
-    for field in DEPRECATED_FIELDS:
-        if field.type_name == type_name and field.new_field_name == field_name:
-            return field
-    return None
 
 
 class FieldCodeGenerator:
@@ -182,28 +169,24 @@ class FieldCodeGenerator:
         field_type = self._get_type()
 
         python_type_name = self._get_python_type_name(field_type)
+        python_param_type_name = python_type_name
+
         if self._array_field:
-            python_type_name = f"list[{python_type_name}]"
+            python_type_name = f"tuple[{python_type_name}, ...]"
+            python_param_type_name = f"Iterable[{python_param_type_name}]"
             self._data.fields.add_import('annotations', '__future__')
+            self._data.fields.add_import('Iterable', 'collections.abc')
 
         if self._optional:
             python_type_name = f"Optional[{python_type_name}]"
+            python_param_type_name = f"Optional[{python_param_type_name}]"
             self._data.fields.add_import('Optional', 'typing')
-
-        if self._hardcoded_value is None:
-            initializer = None
-        elif isinstance(field_type, StringType):
-            initializer = f'"{self._hardcoded_value}"'
-        else:
-            initializer = self._hardcoded_value
 
         self._context.accessible_fields[self._name] = FieldData(
             self._name, field_type, self._offset, self._array_field
         )
 
-        self._data.fields.add_line(
-            f"_{self._name}: {python_type_name} = {initializer} # type: ignore [assignment]"
-        )
+        self._data.fields.add_line(f"_{self._name}: {python_type_name}")
 
         if isinstance(field_type, CustomType):
             self._data.fields.add_import_by_type(field_type)
@@ -212,14 +195,18 @@ class FieldCodeGenerator:
             self._context.length_field_is_referenced_map[self._name] = False
             return
 
-        docstring = self._generate_accessor_docstring()
+        self._data.init_docstring_params.append(
+            CodeBlock()
+            .add(f'{self._name} ({python_param_type_name}): ')
+            .add_code_block(self._generate_init_docstring())
+        )
 
         self._data.add_method(
             CodeBlock()
             .add_line('@property')
             .add_line(f'def {self._name}(self) -> {python_type_name}:')
             .indent()
-            .add_code_block(docstring)
+            .add_code_block(generate_docstring(self._comment))
             .add_line(f'return self._{self._name}')
             .unindent()
         )
@@ -227,59 +214,27 @@ class FieldCodeGenerator:
         self._data.repr_fields.append(self._name)
 
         if self._hardcoded_value is None:
-            setter = (
-                CodeBlock()
-                .add_line(f'@{self._name}.setter')
-                .add_line(f'def {self._name}(self, {self._name}: {python_type_name}) -> None:')
-                .indent()
-                .add_code_block(docstring)
-                .add_line(f'self._{self._name} = {self._name}')
-            )
+            expression = self._name
+            if self._array_field:
+                expression = f'tuple({expression})'
+        elif isinstance(field_type, StringType):
+            expression = f'"{self._hardcoded_value}"'
+        else:
+            expression = self._hardcoded_value
 
-            if self._length_string in self._context.length_field_is_referenced_map:
-                self._context.length_field_is_referenced_map[self._length_string] = True
-                length_field_data = self._context.accessible_fields[self._length_string]
-                setter.add_line(f'self._{length_field_data.name} = len(self._{self._name})')
+        init_param = CodeBlock().add(f'{self._name}: {python_param_type_name}')
+        if self._optional:
+            init_param.add(' = None')
 
-            setter.unindent()
-            self._data.add_method(setter)
+        self._data.init_params.append(init_param)
+        self._data.init_body.add_line(f'self._{self._name} = {expression}')
 
-        deprecated = get_deprecated_field(self._data.class_name, self._name)
-        if deprecated is not None:
-            old_name = deprecated.old_field_name
-            deprecated_docstring = (
-                CodeBlock()
-                .add_line('"""')
-                .add_line('!!! warning "Deprecated"')
-                .add_line()
-                .add_line(f"    Use `{self._name}` instead. (Deprecated since v{deprecated.since})")
-                .add_line('"""')
+        if self._length_string in self._context.length_field_is_referenced_map:
+            self._context.length_field_is_referenced_map[self._length_string] = True
+            length_field_data = self._context.accessible_fields[self._length_string]
+            self._data.init_body.add_line(
+                f'self._{length_field_data.name} = len(self._{self._name})'
             )
-            deprecation_warning = (
-                f"'{self._data.class_name}.{deprecated.old_field_name}' is deprecated as of "
-                f"{deprecated.since}, use '{self._name}' instead."
-            )
-            self._data.add_method(
-                CodeBlock()
-                .add_line('@property')
-                .add_line(f'def {old_name}(self) -> {python_type_name}:')
-                .indent()
-                .add_code_block(deprecated_docstring)
-                .add_line(f'warn("{deprecation_warning}", DeprecationWarning, stacklevel=2)')
-                .add_line(f'return self.{self._name}')
-                .unindent()
-                .add_import("warn", "warnings")
-            )
-            if self._hardcoded_value is None:
-                self._data.add_method(
-                    CodeBlock()
-                    .add_line(f'@{old_name}.setter')
-                    .add_line(f'def {old_name}(self, {self._name}: {python_type_name}) -> None:')
-                    .indent()
-                    .add_code_block(deprecated_docstring)
-                    .add_line(f'self.{self._name} = {self._name}')
-                    .unindent()
-                )
 
     def generate_serialize(self):
         self._generate_serialize_missing_optional_guard()
@@ -287,7 +242,7 @@ class FieldCodeGenerator:
         self._generate_serialize_length_check()
 
         if self._array_field:
-            array_size_expression = self._get_length_expression()
+            array_size_expression = self._get_serialize_length_expression()
             if array_size_expression is None:
                 array_size_expression = f"len(data._{self._name})"
 
@@ -310,6 +265,8 @@ class FieldCodeGenerator:
 
     def generate_deserialize(self):
         if self._optional:
+            python_type = f'Optional[{self._get_python_type_name(self._get_type())}]'
+            self._data.deserialize.add_line(f'{self._name}: {python_type} = None')
             self._data.deserialize.begin_control_flow("if reader.remaining > 0")
 
         if self._array_field:
@@ -320,8 +277,20 @@ class FieldCodeGenerator:
         if self._optional:
             self._data.deserialize.unindent()
 
-    def _generate_accessor_docstring(self):
-        notes = []
+        if self._name is not None and not self._length_field:
+            self._data.deserialize_init_arguments.append(
+                CodeBlock().add(f'{self._name}={self._name}')
+            )
+
+    def _generate_init_docstring(self):
+        result = CodeBlock()
+
+        if self._comment is not None:
+            lines = map(str.strip, escape(self._comment, quote=False).split('\n'))
+            for line in lines:
+                if not result.empty:
+                    result.add(' ')
+                result.add(line)
 
         if self._length_string is not None:
             size_description = ""
@@ -333,14 +302,18 @@ class FieldCodeGenerator:
                 size_description = f'`{self._length_string}`'
                 if self._padded:
                     size_description += " or less"
-            notes.append(f'Length must be {size_description}.')
+            if not result.empty:
+                result.add(' ')
+            result.add(f'(Length must be {size_description}.)')
 
         field_type = self._get_type()
         if isinstance(field_type, IntegerType):
             value_description = "Element value" if self._array_field else "Value"
-            notes.append(f'{value_description} range is 0-{get_max_value_of(field_type)}.')
+            if not result.empty:
+                result.add(' ')
+            result.add(f'({value_description} range is 0-{get_max_value_of(field_type)}.)')
 
-        return generate_docstring(self._comment, notes)
+        return result
 
     def _generate_serialize_missing_optional_guard(self):
         if not self._optional:
@@ -421,7 +394,9 @@ class FieldCodeGenerator:
         result = CodeBlock()
 
         if isinstance(type_, BasicType):
-            length_expression = None if self._array_field else self._get_length_expression()
+            length_expression = (
+                None if self._array_field else self._get_serialize_length_expression()
+            )
             write_statement = FieldCodeGenerator._get_write_statement_for_basic_type(
                 type_, value_expression, length_expression, self._padded
             )
@@ -492,7 +467,7 @@ class FieldCodeGenerator:
             raise AssertionError("Unhandled BasicType")
 
     def _generate_deserialize_array(self):
-        array_length_expression = self._get_length_expression()
+        array_length_expression = self._get_deserialize_length_expression()
 
         if array_length_expression is None and not self._delimited:
             element_size = self._get_type().fixed_size
@@ -503,7 +478,7 @@ class FieldCodeGenerator:
                 )
                 array_length_expression = array_length_variable_name
 
-        self._data.deserialize.add_line(f"data._{self._name} = []")
+        self._data.deserialize.add_line(f"{self._name} = []")
 
         if array_length_expression is None:
             self._data.deserialize.begin_control_flow("while reader.remaining > 0")
@@ -532,12 +507,14 @@ class FieldCodeGenerator:
         statement = CodeBlock()
 
         if self._array_field:
-            statement.add(f"data._{self._name}.append(")
+            statement.add(f"{self._name}.append(")
         elif self._name is not None:
-            statement.add(f"data._{self._name} = ")
+            statement.add(f"{self._name} = ")
 
         if isinstance(type_, BasicType):
-            length_expression = None if self._array_field else self._get_length_expression()
+            length_expression = (
+                None if self._array_field else self._get_deserialize_length_expression()
+            )
             read_basic_type = FieldCodeGenerator._get_read_statement_for_basic_type(
                 type_, length_expression, self._padded
             )
@@ -564,17 +541,24 @@ class FieldCodeGenerator:
 
         return statement.add("\n")
 
-    def _get_length_expression(self):
-        if self._length_string is None:
-            return None
+    def _check_field_accessible(self, field):
+        field_data = self._context.accessible_fields.get(field)
+        if not field_data:
+            raise RuntimeError(f'Referenced {field} field is not accessible.')
 
+    def _get_serialize_length_expression(self):
         expression = self._length_string
-        if not expression.isdigit():
-            field_data = self._context.accessible_fields.get(expression)
-            if not field_data:
-                raise RuntimeError(f'Referenced {expression} field is not accessible.')
-            expression = f'data._{expression}'
+        if expression is not None:
+            if not expression.isdigit():
+                self._check_field_accessible(expression)
+                expression = f'data._{expression}'
+        return expression
 
+    def _get_deserialize_length_expression(self):
+        expression = self._length_string
+        if expression is not None:
+            if not expression.isdigit():
+                self._check_field_accessible(expression)
         return expression
 
     @staticmethod

@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Make protocol objects immutable.
+  - Protocol data structures are now fully instantiated via `__init__`, and can't be modified later.
+  - Array fields are now typed as tuples.
 - Rename `QuestReportServerPacket.npc_id` field to `npc_index`.
 - Make `CastReplyServerPacket.caster_tp` field optional.
 - Make `CastSpecServerPacket.caster_tp` field optional.
@@ -34,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- All protocol object field setters.
 - `EffectPlayerServerPacket.player_id` field.
 - `EffectPlayerServerPacket.effect_id` field.
 - `EffectAgreeServerPacket.coords` field.

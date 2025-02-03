@@ -46,7 +46,13 @@ class SwitchCodeGenerator:
         case_data_field_name = self._case_data_field_name
         switch_field_name = self._field_name
 
-        self._data.fields.add_line(f"_{case_data_field_name}: '{interface_type_name}' = None")
+        self._data.fields.add_line(f"_{case_data_field_name}: '{interface_type_name}'")
+        self._data.init_docstring_params.append(
+            CodeBlock().add(
+                f'{case_data_field_name} ({interface_type_name}): Data associated with the '
+                f'`{switch_field_name}` field.'
+            )
+        )
         self._data.add_method(
             CodeBlock()
             .add_line("@property")
@@ -54,25 +60,21 @@ class SwitchCodeGenerator:
             .indent()
             .add_line('"""')
             .add_line(
-                f'{interface_type_name}: Gets or sets the data associated with the '
-                + f'`{switch_field_name}` field.'
+                f'{interface_type_name}: Data associated with the `{switch_field_name}` field.'
             )
             .add_line('"""')
             .add_line(f"return self._{case_data_field_name}")
             .unindent()
         )
-        self._data.add_method(
-            CodeBlock()
-            .add_line(f"@{case_data_field_name}.setter")
-            .add_line(
-                f"def {case_data_field_name}("
-                + f"self, {case_data_field_name}: '{interface_type_name}') -> None:"
-            )
-            .indent()
-            .add_line(f"self._{case_data_field_name} = {case_data_field_name}")
-            .unindent()
-        )
         self._data.repr_fields.append(case_data_field_name)
+        self._data.init_params.append(
+            CodeBlock().add(f"{case_data_field_name}: '{interface_type_name}' = None")
+        )
+        self._data.init_body.add_line(f'self._{case_data_field_name} = {case_data_field_name}')
+        self._data.deserialize.add_line(f'{case_data_field_name}: {interface_type_name} = None')
+        self._data.deserialize_init_arguments.append(
+            CodeBlock().add(f'{case_data_field_name}={case_data_field_name}')
+        )
 
     def generate_case(self, protocol_case, start):
         case_data_type_name = self.get_case_data_type_name(protocol_case)
@@ -85,15 +87,17 @@ class SwitchCodeGenerator:
         if default:
             if start:
                 raise RuntimeError("Standalone default case is not allowed.")
-            control_flow = "else"
+            self._data.serialize.begin_control_flow('else')
+            self._data.deserialize.begin_control_flow('else')
         else:
             keyword = 'if' if start else 'elif'
-            switch_value_expression = "data._" + self._field_name
             case_value_expression = self._get_case_value_expression(protocol_case)
-            control_flow = f"{keyword} {switch_value_expression} == {case_value_expression}"
-
-        self._data.serialize.begin_control_flow(control_flow)
-        self._data.deserialize.begin_control_flow(control_flow)
+            self._data.serialize.begin_control_flow(
+                f'{keyword} data._{self._field_name} == {case_value_expression}'
+            )
+            self._data.deserialize.begin_control_flow(
+                f'{keyword} {self._field_name} == {case_value_expression}'
+            )
 
         field_to_string_expression = (
             f"{self._field_data.type_.name}(data._{self._field_name}).name"
@@ -115,7 +119,7 @@ class SwitchCodeGenerator:
                 "SerializationError", "eolib.protocol.serialization_error"
             )
 
-            self._data.deserialize.add_line(f"data._{self._case_data_field_name} = None")
+            self._data.deserialize.add_line(f"{self._case_data_field_name} = None")
 
         else:
             self._data.add_auxiliary_type(
@@ -138,7 +142,7 @@ class SwitchCodeGenerator:
             )
 
             self._data.deserialize.add_line(
-                f'data._{self._case_data_field_name} = {case_data_type_name}.deserialize(reader)'
+                f'{self._case_data_field_name} = {case_data_type_name}.deserialize(reader)'
             )
 
         self._data.serialize.unindent()

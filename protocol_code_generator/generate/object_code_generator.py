@@ -36,8 +36,12 @@ class ObjectGenerationData:
         self.super_interfaces = []
         self.fields = CodeBlock()
         self.methods = CodeBlock()
+        self.init_params = []
+        self.init_docstring_params = []
+        self.init_body = CodeBlock()
         self.serialize = CodeBlock()
         self.deserialize = CodeBlock()
+        self.deserialize_init_arguments = []
         self.auxiliary_types = CodeBlock()
         self.docstring = CodeBlock()
         self.repr_fields = ["byte_size"]
@@ -103,6 +107,8 @@ class ObjectCodeGenerator:
             .add_line("_byte_size: int = 0")
             .add_code_block(self._data.fields)
             .add_line()
+            .add_code_block(self._generate_init_method())
+            .add_line()
             .add_code_block(self._generate_get_byte_size())
             .add_line()
             .add_code_block(self._data.methods)
@@ -119,6 +125,31 @@ class ObjectCodeGenerator:
             result.add_code_block(self._data.auxiliary_types)
 
         result.unindent()
+
+        return result
+
+    def _generate_init_method(self):
+        result = CodeBlock().add(f'def __init__(self')
+        if self._data.init_params:
+            result.add(', *')
+        for param in self._data.init_params:
+            result.add(', ')
+            result.add_code_block(param)
+        result.add_line('):')
+
+        result.indent()
+        result.add_line('"""')
+        result.add_line(f'Create a new instance of {self._class_name}.')
+        if self._data.init_docstring_params:
+            result.add_line()
+            result.add_line('Args:')
+            for docstring_param in self._data.init_docstring_params:
+                result.add('    ')
+                result.add_code_block(docstring_param)
+                result.add_line()
+        result.add_line('"""')
+
+        result.add_code_block(self._data.init_body)
 
         return result
 
@@ -168,6 +199,13 @@ class ObjectCodeGenerator:
         return result
 
     def _generate_deserialize_method(self):
+        constructor = CodeBlock().add(f'{self._class_name}(')
+        for i, arg in enumerate(self._data.deserialize_init_arguments):
+            if i > 0:
+                constructor.add(', ')
+            constructor.add_code_block(arg)
+        constructor.add_line(')')
+
         return (
             CodeBlock()
             .add_line("@staticmethod")
@@ -184,13 +222,14 @@ class ObjectCodeGenerator:
             .add_line('Returns:')
             .add_line(f'    {self._class_name}: The data to serialize.')
             .add_line('"""')
-            .add_line(f'data: {self._class_name} = {self._class_name}()')
             .add_line('old_chunked_reading_mode: bool = reader.chunked_reading_mode')
             .begin_control_flow('try')
             .add_line('reader_start_position: int = reader.position')
             .add_code_block(self._data.deserialize)
-            .add_line('data._byte_size = reader.position - reader_start_position')
-            .add_line('return data')
+            .add('result = ')
+            .add_code_block(constructor)
+            .add_line('result._byte_size = reader.position - reader_start_position')
+            .add_line('return result')
             .next_control_flow('finally')
             .add_line('reader.chunked_reading_mode = old_chunked_reading_mode')
             .unindent()
