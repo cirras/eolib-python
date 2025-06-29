@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Support for Python 3.13.
+- Support for Python 3.14.
 - Support for server pub files:
   - `DropRecord` class.
   - `DropNpcRecord` class.
@@ -31,6 +33,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fix bug on Python 3.13+ where any protocol enum instance constructed from an int value would be
+  treated like an unrecognized value.
+- Fix `AttributeError` on Python 3.14 because the readonly `__doc__` attribute was being assigned to
+  in generated protocol code.
 - Fix incorrect (de)serialization of some data structures containing arrays with trailing delimiters.
 - Fix incorrect (de)serialization of data structures containing both `<dummy>` and `<field>` elements.
   (Only `ChestCloseServerPacket` was impacted.)
