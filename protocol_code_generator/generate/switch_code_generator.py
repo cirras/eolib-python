@@ -35,12 +35,9 @@ class SwitchCodeGenerator:
         self._data.add_auxiliary_type(
             CodeBlock()
             .add_line(f"{self._interface_type_name} = {union_type}")
-            .add_line(f"{self._interface_type_name}.__doc__ = \\")
-            .indent()
             .add_line('"""')
             .add_line(f'Data associated with different values of the `{field_name}` field.')
             .add_line('"""')
-            .unindent()
             .add_import("Union", "typing")
         )
 
