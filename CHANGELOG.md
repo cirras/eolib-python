@@ -7,16 +7,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Support for server pub files:
+  - `DropRecord` class.
+  - `DropNpcRecord` class.
+  - `DropFile` class.
+  - `InnQuestionRecord` class.
+  - `InnRecord` class.
+  - `InnFile` class.
+  - `SkillMasterSkillRecord` class.
+  - `SkillMasterRecord` class.
+  - `SkillMasterFile` class.
+  - `ShopTradeRecord` class.
+  - `ShopCraftIngredientRecord` class.
+  - `ShopCraftRecord` class.
+  - `ShopRecord` class.
+  - `ShopFile` class.
+  - `TalkMessageRecord` class.
+  - `TalkRecord` class.
+  - `TalkFile` class.
+- `GuildTakeClientPacket.guild_tag` field.
+
 ### Fixed
 
-- Incorrect (de)serialization of some data structures containing arrays with trailing delimiters.
-- Incorrect (de)serialization of data structures containing both `<dummy>` and `<field>` elements.'
+- Fix incorrect (de)serialization of some data structures containing arrays with trailing delimiters.
+- Fix incorrect (de)serialization of data structures containing both `<dummy>` and `<field>` elements.
   (Only `ChestCloseServerPacket` was impacted.)
+- Fix incorrect (de)serialization of `NpcAgreeServerPacket` due to the `npcs` array's length being
+  treated as a `short` instead of `char`.
+- Fix incorrect (de)serialization of `GuildTakeClientPacket` due to missing `guild_tag` field.
+- Fix incorrect (de)serialization of `AvatarAdminServerPacket` due to incorrect ordering of the
+  `caster_direction` and `damage` fields.
+- Fix inaccurate (de)serialization of `JukeboxMsgClientPacket` due to the packet being treated as a
+  chunked data structure.
 - Sanitize strings within chunked sections of protocol data structures.
   - Generated code now sets `EoWriter.string_sanitization_mode` during serialization.
   - For more information, see
     [Chunked Reading: Sanitization](https://github.com/Cirras/eo-protocol/blob/master/docs/chunks.md#sanitization).
-- Escaped character references appearing in docstrings and downstream generated documentation.
+- Properly escape characters from the upsteam protocol XML in docstrings and downstream generated documentation.
 
 ## [1.1.1] - 2024-08-22
 
