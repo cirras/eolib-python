@@ -18,7 +18,7 @@ DeprecatedField = namedtuple(
     "DeprecatedField", ["type_name", "old_field_name", "new_field_name", "since"]
 )
 
-DEPRECATED_FIELDS = [DeprecatedField("WalkPlayerServerPacket", "Direction", "direction", "1.1.0")]
+DEPRECATED_FIELDS = []
 
 
 def get_deprecated_field(type_name, field_name):
