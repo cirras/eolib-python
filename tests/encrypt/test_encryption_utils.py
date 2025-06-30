@@ -64,24 +64,24 @@ def test_deinterleave(test_case: TCase):
 @pytest.mark.parametrize(
     "test_case",
     [
-        TCase("Hello, World!", "Èåììï¬\u00A0×ïòìä¡"),
+        TCase("Hello, World!", "Èåììï¬\u00a0×ïòìä¡"),
         TCase(
             "We're ¼ of the way there, so ¾ is remaining.",
-            "×å§òå\u00A0<\u00A0ïæ\u00A0ôèå\u00A0÷áù\u00A0ôèåòå¬\u00A0óï\u00A0>\u00A0éó\u00A0òåíáéîéîç®",
+            "×å§òå\u00a0<\u00a0ïæ\u00a0ôèå\u00a0÷áù\u00a0ôèåòå¬\u00a0óï\u00a0>\u00a0éó\u00a0òåíáéîéîç®",
         ),
-        TCase("64² = 4096", "¶´2\u00A0½\u00A0´°¹¶"),
-        TCase("© FÒÖ BÃR BÅZ 2014", ")\u00A0ÆRV\u00A0ÂCÒ\u00A0ÂEÚ\u00A0²°±´"),
+        TCase("64² = 4096", "¶´2\u00a0½\u00a0´°¹¶"),
+        TCase("© FÒÖ BÃR BÅZ 2014", ")\u00a0ÆRV\u00a0ÂCÒ\u00a0ÂEÚ\u00a0²°±´"),
         TCase(
             "Öxxö Xööx \"Lëïth Säë\" - \"Ÿ\"",
-            "Vøøv\u00A0Øvvø\u00A0¢Ìkoôè\u00A0Ódk¢\u00A0\u00AD\u00A0¢\u001F¢",
+            "Vøøv\u00a0Øvvø\u00a0¢Ìkoôè\u00a0Ódk¢\u00a0\u00ad\u00a0¢\u001f¢",
         ),
         TCase(
             "Padded with 0xFFÿÿÿÿÿÿÿÿ",
-            "Ðáääåä\u00A0÷éôè\u00A0°øÆÆ\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F",
+            "Ðáääåä\u00a0÷éôè\u00a0°øÆÆ\u007f\u007f\u007f\u007f\u007f\u007f\u007f\u007f",
         ),
         TCase(
             "This string contains NUL\0 (value 0) and a € (value 128)",
-            "Ôèéó\u00A0óôòéîç\u00A0ãïîôáéîó\u00A0ÎÕÌ\0\u00A0¨öáìõå\u00A0°©\u00A0áîä\u00A0á\u00A0€\u00A0¨öáìõå\u00A0±²¸©",
+            "Ôèéó\u00a0óôòéîç\u00a0ãïîôáéîó\u00a0ÎÕÌ\0\u00a0¨öáìõå\u00a0°©\u00a0áîä\u00a0á\u00a0€\u00a0¨öáìõå\u00a0±²¸©",
         ),
     ],
     ids=idfn,

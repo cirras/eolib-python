@@ -54,7 +54,7 @@ def test_add_fixed_string():
 def test_add_padded_fixed_string():
     writer = EoWriter()
     writer.add_fixed_string("bar", 6, True)
-    assert writer.to_bytearray() == b'bar\xFF\xFF\xFF'
+    assert writer.to_bytearray() == b'bar\xff\xff\xff'
 
 
 def test_add_padded_with_perfect_fit_fixed_string():
@@ -78,7 +78,7 @@ def test_add_fixed_encoded_string():
 def test_add_padded_fixed_encoded_string():
     writer = EoWriter()
     writer.add_fixed_encoded_string("bar", 6, True)
-    assert writer.to_bytearray() == b'\xFF\xFF\xFF-l='
+    assert writer.to_bytearray() == b'\xff\xff\xff-l='
 
 
 def test_add_padded_with_perfect_fit_fixed_encoded_string():
@@ -105,7 +105,7 @@ def test_add_sanitized_padded_fixed_string():
     writer = EoWriter()
     writer.string_sanitization_mode = True
     writer.add_fixed_string("aÿz", 6, True)
-    assert writer.to_bytearray() == b'ayz\xFF\xFF\xFF'
+    assert writer.to_bytearray() == b'ayz\xff\xff\xff'
 
 
 def test_add_sanitized_encoded_string():
@@ -126,7 +126,7 @@ def test_add_sanitized_padded_fixed_encoded_string():
     writer = EoWriter()
     writer.string_sanitization_mode = True
     writer.add_fixed_encoded_string("aÿz", 6, True)
-    assert writer.to_bytearray() == b'\xFF\xFF\xFF%T>'
+    assert writer.to_bytearray() == b'\xff\xff\xff%T>'
 
 
 def test_add_numbers_on_boundary():

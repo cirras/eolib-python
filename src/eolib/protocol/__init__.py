@@ -1,4 +1,4 @@
-"""	
+"""
 EO protocol data structures.
 
 See Also:
