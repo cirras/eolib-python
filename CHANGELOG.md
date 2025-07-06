@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Make `eolib.protocol.pub.server` types available from the top-level `eolib` package.
+
 ## [2.0.0] - 2025-06-30
 
 ### Added
