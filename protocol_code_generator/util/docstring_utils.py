@@ -3,7 +3,7 @@ from html import escape
 from protocol_code_generator.generate.code_block import CodeBlock
 
 
-def generate_docstring(protocol_comment, notes=[]):
+def generate_docstring(protocol_comment):
     lines = []
 
     if protocol_comment:

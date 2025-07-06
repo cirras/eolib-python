@@ -104,8 +104,7 @@ class CodeBlock:
     def to_string(self, package_path):
         result = ""
 
-        relativize = lambda i: i.relativize(package_path)
-        import_strings = set(map(relativize, self._imports))
+        import_strings = {i.relativize(package_path) for i in self._imports}
         import_strings = sorted(import_strings, reverse=True)
 
         for import_ in import_strings:

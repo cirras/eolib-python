@@ -129,7 +129,7 @@ class ObjectCodeGenerator:
         return result
 
     def _generate_init_method(self):
-        result = CodeBlock().add(f'def __init__(self')
+        result = CodeBlock().add('def __init__(self')
         if self._data.init_params:
             result.add(', *')
         for param in self._data.init_params:
@@ -238,12 +238,13 @@ class ObjectCodeGenerator:
 
     def _generate_repr_method(self):
         field_to_repr_str = lambda field: field + "={repr(self._" + field + ")}"
-        repr_str = ', '.join(map(field_to_repr_str, self._data.repr_fields))
+        repr_field_strs = [field_to_repr_str(field) for field in self._data.repr_fields]
+        repr_expression = 'f"' + self._class_name + '(' + ', '.join(repr_field_strs) + ')"'
         return (
             CodeBlock()
             .add_line('def __repr__(self):')
             .indent()
-            .add_line(f'return f"{self._class_name}({repr_str})"')
+            .add_line(f'return {repr_expression}')
             .unindent()
         )
 

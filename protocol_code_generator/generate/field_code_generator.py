@@ -548,17 +548,15 @@ class FieldCodeGenerator:
 
     def _get_serialize_length_expression(self):
         expression = self._length_string
-        if expression is not None:
-            if not expression.isdigit():
-                self._check_field_accessible(expression)
-                expression = f'data._{expression}'
+        if expression is not None and not expression.isdigit():
+            self._check_field_accessible(expression)
+            expression = f'data._{expression}'
         return expression
 
     def _get_deserialize_length_expression(self):
         expression = self._length_string
-        if expression is not None:
-            if not expression.isdigit():
-                self._check_field_accessible(expression)
+        if expression is not None and not expression.isdigit():
+            self._check_field_accessible(expression)
         return expression
 
     @staticmethod
