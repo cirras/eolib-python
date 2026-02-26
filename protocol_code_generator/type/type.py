@@ -1,15 +1,18 @@
-from abc import ABC, abstractproperty
+from abc import ABC, abstractmethod
 
 
 class Type(ABC):
-    @abstractproperty
+    @property
+    @abstractmethod
     def name(self):
         pass
 
-    @abstractproperty
+    @property
+    @abstractmethod
     def fixed_size(self):
         pass
 
-    @abstractproperty
+    @property
+    @abstractmethod
     def bounded(self):
         pass

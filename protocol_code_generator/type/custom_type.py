@@ -1,8 +1,9 @@
-from abc import abstractproperty
+from abc import abstractmethod
 from protocol_code_generator.type.type import Type
 
 
 class CustomType(Type):
-    @abstractproperty
+    @property
+    @abstractmethod
     def source_path(self):
         pass

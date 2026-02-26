@@ -1,5 +1,5 @@
 import random
-from abc import ABC, abstractproperty
+from abc import ABC, abstractmethod
 from eolib.data.eo_numeric_limits import CHAR_MAX
 
 
@@ -9,7 +9,8 @@ class SequenceStart(ABC):
     counter ID'.
     """
 
-    @abstractproperty
+    @property
+    @abstractmethod
     def value(self) -> int:
         """
         int: Gets the sequence start value.
