@@ -31,8 +31,8 @@ dependencies = []
 
 [project.urls]
 Documentation = "https://cirras.github.io/eolib-python"
-Issues = "https://github.com/Cirras/eolib-python/issues"
-Source = "https://github.com/Cirras/eolib-python"
+Issues = "https://github.com/cirras/eolib-python/issues"
+Source = "https://github.com/cirras/eolib-python"
 
 [dependency-groups]
 dev = [
