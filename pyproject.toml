@@ -36,7 +36,6 @@ Source = "https://github.com/Cirras/eolib-python"
 
 [dependency-groups]
 dev = [
-  "black==24.8.0",
   "coverage[toml]>=6.5",
   "keepachangelog==1.0.0",
   "mike",
@@ -49,6 +48,7 @@ dev = [
   "mkdocstrings[python]",
   "mypy>=1.0.0",
   "pytest",
+  "ruff",
   "taskipy>=1.14.1",
 ]
 
@@ -68,8 +68,8 @@ pre_test = "python protocol.py generate"
 test = "coverage run -m pytest --no-header -v tests"
 post_test = "coverage combine && coverage xml"
 
-format = "black ."
-"format:check" = "black --check --diff ."
+format = "ruff format ."
+"format:check" = "ruff format --check ."
 
 typing = "python protocol.py generate && mypy --install-types --non-interactive src"
 
@@ -84,10 +84,12 @@ typing = "python protocol.py generate && mypy --install-types --non-interactive 
 
 "release:prepare" = "python prepare_release.py"
 
-[tool.black]
-target-version = ["py37"]
+[tool.ruff]
+target-version = "py38"
 line-length = 100
-skip-string-normalization = true
+
+[tool.ruff.format]
+quote-style = "preserve"
 
 [tool.coverage.run]
 source_pkgs = ["eolib"]

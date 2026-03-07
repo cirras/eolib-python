@@ -46,8 +46,8 @@ Utilities:
 | ----------------------------- | ------------------------------------------------------ |
 | `uv build`                    | Build package                                          |
 | `uv run task test`            | Run unit tests with coverage                           |
-| `uv run task format`          | Format source files using `black`                      |
-| `uv run task format:check`    | Check formatting using `black`                         |
+| `uv run task format`          | Format source files using `ruff`                       |
+| `uv run task format:check`    | Check formatting using `ruff`                          |
 | `uv run task typing`          | Check typing using `mypy`                              |
 | `uv run task docs:build`      | Build documentation using `mkdocs`                     |
 | `uv run task docs:serve`      | Build and serve documentation using `mkdocs`           |
