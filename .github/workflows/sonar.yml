@@ -21,16 +21,13 @@ jobs:
           fetch-depth: 0
           submodules: true
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v6
         with:
           python-version: 3.8
 
-      - name: Install Hatch
-        run: pip install --upgrade hatch
-
       - name: Run tests
-        run: hatch run test
+        run: uv run task test
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarqube-scan-action@v6

@@ -26,16 +26,13 @@ jobs:
           fetch-depth: 0
           submodules: true
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v6
         with:
           python-version: 3.8
 
-      - name: Install Hatch
-        run: pip install --upgrade hatch
-
       - name: Build package
-        run: hatch build
+        run: uv build
 
       - name: Push Python artifacts to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
@@ -55,13 +52,10 @@ jobs:
           fetch-depth: 0
           submodules: true
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v6
         with:
           python-version: 3.8
-
-      - name: Install Hatch
-        run: pip install --upgrade hatch
 
       - name: Get version from tag
         id: get-version
@@ -72,7 +66,7 @@ jobs:
           git fetch origin gh-pages --depth=1
           git config user.name github-actions
           git config user.email github-actions@github.com
-          hatch run docs:deploy ${{ steps.get-version.outputs.version-without-v }}
+          uv run task docs:deploy -- ${{ steps.get-version.outputs.version-without-v }} latest
           git push origin gh-pages
  
   publish-github:

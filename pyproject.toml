@@ -34,6 +34,24 @@ Documentation = "https://cirras.github.io/eolib-python"
 Issues = "https://github.com/Cirras/eolib-python/issues"
 Source = "https://github.com/Cirras/eolib-python"
 
+[dependency-groups]
+dev = [
+  "black==24.8.0",
+  "coverage[toml]>=6.5",
+  "keepachangelog==1.0.0",
+  "mike",
+  "mkdocs<2",
+  "mkdocs-gen-files",
+  "mkdocs-include-markdown-plugin",
+  "mkdocs-literate-nav",
+  "mkdocs-material",
+  "mkdocs-section-index",
+  "mkdocstrings[python]",
+  "mypy>=1.0.0",
+  "pytest",
+  "taskipy>=1.14.1",
+]
+
 [tool.hatch.version]
 path = "src/eolib/__about__.py"
 
@@ -45,77 +63,26 @@ artifacts = [
   "src/eolib/protocol/_generated",
 ]
 
-[tool.hatch.envs.default]
-dependencies = [
-  "coverage[toml]>=6.5",
-  "pytest",
-]
-[tool.hatch.envs.default.scripts]
-test = [
-  "python protocol.py generate",
-  "coverage run -m pytest --no-header -v {args:tests}",
-  "- coverage combine",
-  "coverage xml",
-]
+[tool.taskipy.tasks]
+pre_test = "python protocol.py generate"
+test = "coverage run -m pytest --no-header -v tests"
+post_test = "coverage combine && coverage xml"
 
-[[tool.hatch.envs.all.matrix]]
-python = ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+format = "black ."
+"format:check" = "black --check --diff ."
 
-[tool.hatch.envs.lint]
-detached = true
-dependencies = [
-  "black==24.8.0",
-  "mypy>=1.0.0",
-]
-[tool.hatch.envs.lint.scripts]
-format = "black {args:.}"
-style = "black --check --diff {args:.}"
-typing = [
-  "python protocol.py generate",
-  "mypy --install-types --non-interactive {args:src}"
-]
-all = [
-  "style",
-  "typing",
-]
+typing = "python protocol.py generate && mypy --install-types --non-interactive src"
 
-[tool.hatch.envs.docs]
-detached = true
-dependencies = [
-  "mike",
-  "mkdocs",
-  "mkdocs-material",
-  "mkdocs-gen-files",
-  "mkdocs-section-index",
-  "mkdocs-literate-nav",
-  "mkdocstrings[python]",
-  "mkdocs-include-markdown-plugin",
-]
+"pre_docs:build" = "python protocol.py generate"
+"docs:build" = "uv run --env-file .env.docs mkdocs build"
 
-[tool.hatch.envs.docs.scripts]
-build = [
-  "python protocol.py generate",
-  "mkdocs build"
-]
-serve = [
-  "python protocol.py generate",
-  "mkdocs serve"
-]
-deploy = [
-  "python protocol.py generate",
-  "mike deploy --update-aliases {args:DEV} latest"
-]
+"pre_docs:serve" = "python protocol.py generate"
+"docs:serve" = "uv run --env-file .env.docs mkdocs serve"
 
-[tool.hatch.envs.release]
-detached = true
-dependencies = [
-  "keepachangelog==1.0.0",
-]
+"pre_docs:deploy" = "python protocol.py generate"
+"docs:deploy" = "uv run --env-file .env.docs mike deploy --update-aliases"
 
-[tool.hatch.envs.release.scripts]
-prepare = [
-  "python prepare_release.py {args}" 
-]
+"release:prepare" = "python prepare_release.py"
 
 [tool.black]
 target-version = ["py37"]

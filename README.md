@@ -38,21 +38,18 @@ Utilities:
 
 ### Requirements
 
-- [Python](https://www.python.org/downloads/) 3.8+
-- [Hatch](https://hatch.pypa.io/latest/install/)
+- [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
 ### Available Commands
 
-| Command                     | Description                                            |
-| --------------------------- | ------------------------------------------------------ |
-| `hatch build`               | Build package                                          |
-| `hatch clean`               | Remove build artifacts                                 |
-| `hatch run test`            | Run unit tests with coverage                           |
-| `hatch run lint:format`     | Format source files using `black`                      |
-| `hatch run lint:style`      | Check formatting using `black`                         |
-| `hatch run lint:typing`     | Check typing using `mypy`                              |
-| `hatch run lint:all`        | Check formatting using `black` and typing using `mypy` |
-| `hatch run docs:build`      | Build documentation using `mkdocs`                     |
-| `hatch run docs:serve`      | Build and serve documentation using `mkdocs`           |
-| `hatch run docs:deploy`     | Build and deploy documentation using `mkdocs` & `mike` |
-| `hatch run release:prepare` | Prepare and tag a new release                          |
+| Command                       | Description                                            |
+| ----------------------------- | ------------------------------------------------------ |
+| `uv build`                    | Build package                                          |
+| `uv run task test`            | Run unit tests with coverage                           |
+| `uv run task format`          | Format source files using `black`                      |
+| `uv run task format:check`    | Check formatting using `black`                         |
+| `uv run task typing`          | Check typing using `mypy`                              |
+| `uv run task docs:build`      | Build documentation using `mkdocs`                     |
+| `uv run task docs:serve`      | Build and serve documentation using `mkdocs`           |
+| `uv run task docs:deploy`     | Build and deploy documentation using `mkdocs` & `mike` |
+| `uv run task release:prepare` | Prepare and tag a new release                          |

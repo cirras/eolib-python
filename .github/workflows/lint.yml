@@ -20,13 +20,10 @@ jobs:
       with:
         submodules: true
 
-    - name: Setup Python
-      uses: actions/setup-python@v4
+    - name: Setup uv
+      uses: astral-sh/setup-uv@v6
       with:
         python-version: 3.8
 
-    - name: Install Hatch
-      run: pip install --upgrade hatch
-
     - name: Lint typing and code style
-      run: hatch run lint:all
+      run: uv run task format:check && uv run task typing
