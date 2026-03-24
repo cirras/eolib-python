@@ -1,8 +1,5 @@
 """
 EO network protocol data structures.
-
-See Also:
-  - [eolib.protocol._generated.net][]
 """
 
 from .packet import *

@@ -8,22 +8,25 @@ def server_verification_hash(challenge: int) -> int:
                          Should be no larger than 11,092,110.
 
     Returns:
-        int: The hashed challenge value.
+        The hashed challenge value.
 
-    Remarks:
-        - The client sends an integer value to the server in the `INIT_INIT` client packet, where it
-          is referred to as the `challenge`.
-        - The server hashes the value and sends the hash back in the `INIT_INIT` server packet.
-        - The client hashes the value and compares it to the hash sent by the server.
-        - If the hashes don't match, the client drops the connection.
+    .. admonition:: Remarks
 
-    Warning:
-        - Oversized challenges may result in negative hash values, which cannot be represented
-          properly in the EO protocol.
+       - The client sends an integer value to the server in the ``INIT_INIT`` client packet, where
+         it is referred to as the ``challenge``.
+       - The server hashes the value and sends the hash back in the ``INIT_INIT`` server packet.
+       - The client hashes the value and compares it to the hash sent by the server.
+       - If the hashes do not match, the client drops the connection.
 
-    See Also:
-        - [`InitInitClientPacket.challenge`][eolib.protocol._generated.net.client.InitInitClientPacket.challenge]
-        - [`InitInitServerPacket.ReplyCodeDataOk.challenge_response`][eolib.protocol._generated.net.server.InitInitServerPacket.ReplyCodeDataOk.challenge_response]
+    .. warning::
+
+       Oversized challenges may result in negative hash values, which cannot be represented
+       properly in the EO protocol.
+
+    .. seealso::
+
+       - :attr:`eolib.protocol.net.client.InitInitClientPacket.challenge`
+       - :attr:`eolib.protocol.net.server.InitInitServerPacket.ReplyCodeDataOk.challenge_response`
     """
     challenge += 1
     return (

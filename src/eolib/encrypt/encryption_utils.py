@@ -5,9 +5,8 @@ def interleave(data: bytearray) -> None:
     Used when encrypting packets and data files.
 
     Example:
-        ```
-        [0, 1, 2, 3, 4, 5] -> [0, 5, 1, 4, 2, 3]
-        ```
+        >>> interleave([0, 1, 2, 3, 4, 5])
+        [0, 5, 1, 4, 2, 3]
 
     This is an in-place operation.
 
@@ -43,9 +42,8 @@ def deinterleave(data: bytearray) -> None:
     Used when decrypting packets and data files.
 
     Example:
-        ```
-        [0, 1, 2, 3, 4, 5] -> [0, 2, 4, 5, 3, 1]
-        ```
+        >>> deinterleave([0, 1, 2, 3, 4, 5])
+        [0, 2, 4, 5, 3, 1]
 
     This is an in-place operation.
 
@@ -82,9 +80,8 @@ def flip_msb(data: bytearray) -> None:
     Used when encrypting and decrypting packets.
 
     Example:
-        ```
-        [0, 1, 127, 128, 129, 254, 255] -> [0, 129, 255, 128, 1, 126, 127]
-        ```
+        >>> flip_msb([0, 1, 127, 128, 129, 254, 255])
+        [0, 129, 255, 128, 1, 126, 127]
 
     This is an in-place operation.
 
@@ -104,10 +101,8 @@ def swap_multiples(data: bytearray, multiple: int) -> None:
     Used when encrypting and decrypting packets and data files.
 
     Example:
-        ```
-        multiple = 3
-        [10, 21, 27] -> [10, 27, 21]
-        ```
+        >>> swap_multiples([10, 21, 27], 3)
+        [10, 27, 21]
 
     This is an in-place operation.
 

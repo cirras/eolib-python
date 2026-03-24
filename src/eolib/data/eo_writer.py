@@ -147,10 +147,7 @@ class EoWriter:
     @property
     def string_sanitization_mode(self) -> bool:
         """
-        Gets the string sanitization mode for the writer.
-
-        Returns:
-            bool: True if string sanitization is enabled.
+        Whether string sanitization is enabled for the writer.
         """
         return self._string_sanitization_mode
 
@@ -163,7 +160,7 @@ class EoWriter:
         Gets the writer data as a byte array.
 
         Returns:
-            bytearray: A copy of the writer data as a byte array.
+            A copy of the writer data as a byte array.
         """
         return self.data.copy()
 
@@ -172,7 +169,7 @@ class EoWriter:
         Gets the length of the writer data.
 
         Returns:
-            int: The length of the writer data.
+            The length of the writer data.
         """
         return len(self.data)
 
@@ -227,6 +224,6 @@ class EoWriter:
             string (str): The string to encode.
 
         Returns:
-            bytearray: The encoded string.
+            The encoded string.
         """
         return bytearray(string, 'windows-1252', 'replace')

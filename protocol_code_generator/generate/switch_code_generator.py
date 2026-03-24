@@ -49,8 +49,7 @@ class SwitchCodeGenerator:
         self._data.fields.add_line(f"_{case_data_field_name}: '{interface_type_name}'")
         self._data.init_docstring_params.append(
             CodeBlock().add(
-                f'{case_data_field_name} ({interface_type_name}): Data associated with the '
-                f'`{switch_field_name}` field.'
+                f'{case_data_field_name}: Data associated with the `{switch_field_name}` field.'
             )
         )
         self._data.add_method(
@@ -58,11 +57,9 @@ class SwitchCodeGenerator:
             .add_line("@property")
             .add_line(f"def {case_data_field_name}(self) -> '{interface_type_name}':")
             .indent()
-            .add_line('"""')
-            .add_line(
-                f'{interface_type_name}: Data associated with the `{switch_field_name}` field.'
+            .add_code_block(
+                generate_docstring(f'Data associated with the `{switch_field_name}` field.')
             )
-            .add_line('"""')
             .add_line(f"return self._{case_data_field_name}")
             .unindent()
         )

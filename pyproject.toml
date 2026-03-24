@@ -38,17 +38,14 @@ Source = "https://github.com/cirras/eolib-python"
 dev = [
   "coverage[toml]>=6.5",
   "keepachangelog==1.0.0",
-  "mike",
-  "mkdocs<2",
-  "mkdocs-gen-files",
-  "mkdocs-include-markdown-plugin",
-  "mkdocs-literate-nav",
-  "mkdocs-material",
-  "mkdocs-section-index",
-  "mkdocstrings[python]",
   "mypy>=1.0.0",
   "pytest",
   "ruff",
+  "furo>=2025.12.19; python_version >= '3.12'",
+  "myst-parser>=5,<6; python_version >= '3.12'",
+  "sphinx>=9,<10; python_version >= '3.12'",
+  "sphinx-autobuild>=2025.8.25; python_version >= '3.12'",
+  "sphinx-autodoc-typehints>=3.9.11; python_version >= '3.12'",
   "taskipy>=1.14.1",
 ]
 
@@ -74,13 +71,13 @@ format = "ruff format ."
 typing = "python protocol.py generate && mypy --install-types --non-interactive src"
 
 "pre_docs:build" = "python protocol.py generate"
-"docs:build" = "uv run --env-file .env.docs mkdocs build"
+"docs:build" = "sphinx-build -E -b html docs docs/_build/html"
 
 "pre_docs:serve" = "python protocol.py generate"
-"docs:serve" = "uv run --env-file .env.docs mkdocs serve"
+"docs:serve" = "sphinx-autobuild --ignore \"docs/_build\" docs docs/_build/html"
 
 "pre_docs:deploy" = "python protocol.py generate"
-"docs:deploy" = "uv run --env-file .env.docs mike deploy --update-aliases"
+"docs:deploy" = "python docs/deploy.py"
 
 "release:prepare" = "python prepare_release.py"
 

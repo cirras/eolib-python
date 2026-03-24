@@ -1,0 +1,32 @@
+<div
+  class="sidebar-version-picker-container"
+  data-eolib-version-picker
+  data-current-version="{{ release }}"
+  data-current-builder="sphinx"
+  data-page-name="{{ pagename }}"
+  data-version-root="{{ 'index.html' if pagename == master_doc else pathto(master_doc) }}"
+>
+  <label class="visually-hidden" for="sidebar-version-picker-button">
+    {{ _("Version") }}
+  </label>
+  <div class="sidebar-version-picker-control">
+    <button
+      id="sidebar-version-picker-button"
+      class="sidebar-version-picker"
+      type="button"
+      data-eolib-version-button
+      aria-haspopup="listbox"
+      aria-expanded="false"
+      aria-label="{{ _('Version') }}"
+    >
+      <span data-eolib-version-current>{{ release }}</span>
+    </button>
+    <ul
+      class="sidebar-version-picker-menu"
+      data-eolib-version-menu
+      role="listbox"
+      aria-labelledby="sidebar-version-picker-button"
+      hidden
+    ></ul>
+  </div>
+</div>

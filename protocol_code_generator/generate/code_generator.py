@@ -136,12 +136,15 @@ class ProtocolCodeGenerator:
             .add_line('"""')
             .add_line(
                 'Data structures generated from the '
-                + f'[eo-protocol]({eo_protocol_url}){{target="_blank"}} XML specification.'
+                + f'`eo-protocol <{eo_protocol_url}>`_ XML specification.'
             )
             .add_line()
-            .add_line('Warning:')
-            .add_line('  - This subpackage should not be directly imported. ')
-            .add_line(f'  - Instead, import [{public_package}][] (or the top-level `eolib`).')
+            .add_line('.. warning::')
+            .add_line()
+            .add_line('   This subpackage should not be directly imported.')
+            .add_line(
+                f'   Instead, import :mod:`{public_package}` (or the top-level :mod:`eolib`).'
+            )
             .add_line('"""')
         )
 
@@ -240,7 +243,7 @@ class ProtocolCodeGenerator:
             .add_line("Returns the packet family associated with this packet.")
             .add_line()
             .add_line("Returns:")
-            .add_line("    PacketFamily: The packet family associated with this packet.")
+            .add_line("    The packet family associated with this packet.")
             .add_line('"""')
             .add_line(f"return PacketFamily.{family_enum_value.python_name}")
             .unindent()
@@ -255,7 +258,7 @@ class ProtocolCodeGenerator:
             .add_line("Returns the packet action associated with this packet.")
             .add_line()
             .add_line("Returns:")
-            .add_line("    PacketAction: The packet action associated with this packet.")
+            .add_line("    The packet action associated with this packet.")
             .add_line('"""')
             .add_line(f"return PacketAction.{action_enum_value.python_name}")
             .unindent()

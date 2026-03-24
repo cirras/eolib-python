@@ -17,7 +17,7 @@ class Packet(ABC):
         Returns the packet family associated with this packet.
 
         Returns:
-            PacketFamily: The packet family associated with this packet.
+            The packet family associated with this packet.
         """
         raise NotImplementedError()
 
@@ -28,7 +28,7 @@ class Packet(ABC):
         Returns the packet action associated with this packet.
 
         Returns:
-            PacketAction: The packet action associated with this packet.
+            The packet action associated with this packet.
         """
         raise NotImplementedError()
 

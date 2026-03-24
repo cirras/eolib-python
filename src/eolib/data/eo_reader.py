@@ -7,11 +7,11 @@ class EoReader(object):
     """
     A class for reading EO data from a sequence of bytes.
 
-    `EoReader` features a chunked reading mode, which is important for accurate emulation of
+    ``EoReader`` features a chunked reading mode, which is important for accurate emulation of
     the official game client.
 
-    See documentation for chunked reading:
-    https://github.com/Cirras/eo-protocol/blob/master/docs/chunks.md
+    See the `chunked reading documentation
+    <https://github.com/Cirras/eo-protocol/blob/master/docs/chunks.md>`_ for more information.
     """
 
     _data: memoryview
@@ -52,7 +52,7 @@ class EoReader(object):
                 starting from `index`.
 
         Returns:
-            EoReader: The new reader.
+            The new reader.
 
         Raises:
             ValueError: If `index` or `length` is negative.
@@ -78,7 +78,7 @@ class EoReader(object):
         Reads a raw byte from the input data.
 
         Returns:
-            int: A raw byte.
+            A raw byte.
         """
         return self._read_byte()
 
@@ -90,7 +90,7 @@ class EoReader(object):
             length (int): The number of bytes to read.
 
         Returns:
-            bytearray: An array of raw bytes.
+            An array of raw bytes.
         """
         return self._read_bytes(length)
 
@@ -99,7 +99,7 @@ class EoReader(object):
         Reads an encoded 1-byte integer from the input data.
 
         Returns:
-            int: A decoded 1-byte integer.
+            A decoded 1-byte integer.
         """
         return decode_number(self._read_bytes(1))
 
@@ -108,7 +108,7 @@ class EoReader(object):
         Reads an encoded 2-byte integer from the input data.
 
         Returns:
-            int: A decoded 2-byte integer.
+            A decoded 2-byte integer.
         """
         return decode_number(self._read_bytes(2))
 
@@ -117,7 +117,7 @@ class EoReader(object):
         Reads an encoded 3-byte integer from the input data.
 
         Returns:
-            int: A decoded 3-byte integer.
+            A decoded 3-byte integer.
         """
         return decode_number(self._read_bytes(3))
 
@@ -126,7 +126,7 @@ class EoReader(object):
         Reads an encoded 4-byte integer from the input data.
 
         Returns:
-            int: A decoded 4-byte integer.
+            A decoded 4-byte integer.
         """
         return decode_number(self._read_bytes(4))
 
@@ -135,7 +135,7 @@ class EoReader(object):
         Reads a string from the input data.
 
         Returns:
-            str: A string.
+            A string.
         """
         string_bytes = self._read_bytes(self.remaining)
         return self._decode_ansi(string_bytes)
@@ -149,7 +149,7 @@ class EoReader(object):
             padded (bool, optional): True if the string is padded with trailing `0xFF` bytes.
 
         Returns:
-            str: A decoded string.
+            A decoded string.
 
         Raises:
             ValueError: If the length is negative.
@@ -166,7 +166,7 @@ class EoReader(object):
         Reads an encoded string from the input data.
 
         Returns:
-            str: A decoded string.
+            A decoded string.
         """
         bytes_ = self._read_bytes(self.remaining)
         decode_string(bytes_)
@@ -181,7 +181,7 @@ class EoReader(object):
             padded (bool, optional): True if the string is padded with trailing `0xFF` bytes.
 
         Returns:
-            str: A decoded string.
+            A decoded string.
 
         Raises:
             ValueError: If the length is negative.
@@ -197,11 +197,12 @@ class EoReader(object):
     @property
     def chunked_reading_mode(self) -> bool:
         """
-        bool: Gets or sets the chunked reading mode for the reader.
+        Gets or sets the chunked reading mode for the reader.
 
         In chunked reading mode:
-        - The reader will treat `0xFF` bytes as the end of the current chunk.
-        - `next_chunk()` can be called to move to the next chunk.
+
+        - The reader will treat ``0xFF`` bytes as the end of the current chunk.
+        - :meth:`next_chunk` can be called to move to the next chunk.
         """
         return self._chunked_reading_mode
 
@@ -214,8 +215,8 @@ class EoReader(object):
     @property
     def remaining(self) -> int:
         """
-        int: If chunked reading mode is enabled, gets the number of bytes remaining in the current
-            chunk. Otherwise, gets the total number of bytes remaining in the input data.
+        If chunked reading mode is enabled, gets the number of bytes remaining in the current
+        chunk. Otherwise, gets the total number of bytes remaining in the input data.
         """
         if self.chunked_reading_mode:
             return self._next_break - min(self.position, self._next_break)
@@ -243,7 +244,7 @@ class EoReader(object):
     @property
     def position(self) -> int:
         """
-        int: Gets the current position in the input data.
+        Gets the current position in the input data.
         """
         return self._position
 
@@ -252,7 +253,7 @@ class EoReader(object):
         Reads a raw byte from the input data.
 
         Returns:
-            int: A raw byte.
+            A raw byte.
         """
         if self.remaining > 0:
             byte = self._data[self._position]
@@ -268,7 +269,7 @@ class EoReader(object):
             length (int): The number of bytes to read.
 
         Returns:
-            bytearray: An array of raw bytes.
+            An array of raw bytes.
         """
         length = min(length, self.remaining)
 
@@ -282,7 +283,7 @@ class EoReader(object):
         Finds the index of the next break byte (0xFF) in the input data.
 
         Returns:
-            int: The index of the next break byte, or the length of the data if not found.
+            The index of the next break byte, or the length of the data if not found.
         """
         for i in range(self._chunk_start, len(self._data)):
             if self._data[i] == 0xFF:
@@ -298,7 +299,7 @@ class EoReader(object):
             array (bytearray): The sequence of bytes.
 
         Returns:
-            bytearray: The bytes without padding.
+            The bytes without padding.
         """
         padding_start = array.find(bytes([0xFF]))
         if padding_start != -1:
@@ -314,6 +315,6 @@ class EoReader(object):
             bytes (bytearray): The sequence of bytes to decode.
 
         Returns:
-            str: The decoded string.
+            The decoded string.
         """
         return bytes.decode('windows-1252', 'replace')

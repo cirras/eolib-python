@@ -196,9 +196,7 @@ class FieldCodeGenerator:
             return
 
         self._data.init_docstring_params.append(
-            CodeBlock()
-            .add(f'{self._name} ({python_param_type_name}): ')
-            .add_code_block(self._generate_init_docstring())
+            CodeBlock().add(f'{self._name}: ').add_code_block(self._generate_init_docstring())
         )
 
         self._data.add_method(
@@ -206,7 +204,7 @@ class FieldCodeGenerator:
             .add_line('@property')
             .add_line(f'def {self._name}(self) -> {python_type_name}:')
             .indent()
-            .add_code_block(generate_docstring(self._comment))
+            .add_code_block(generate_docstring(self._comment or f'The `{self._name}` field.'))
             .add_line(f'return self._{self._name}')
             .unindent()
         )

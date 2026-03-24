@@ -9,7 +9,7 @@ def encode_number(number: int) -> bytes:
         number (int): The number to encode.
 
     Returns:
-        bytes: The encoded sequence of bytes.
+        The encoded sequence of bytes.
     """
     value = number
     d = 0xFE
@@ -40,7 +40,7 @@ def decode_number(encoded_number: bytes) -> int:
         encoded_number (bytes): The sequence of bytes to decode.
 
     Returns:
-        int: The decoded number.
+        The decoded number.
     """
     result = 0
     length = min(len(encoded_number), 4)

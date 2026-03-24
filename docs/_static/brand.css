@@ -1,0 +1,51 @@
+.sidebar-brand-row {
+    align-items: center;
+    display: flex;
+    gap: 0.35rem;
+    justify-content: flex-start;
+    overflow: visible;
+    padding: var(--sidebar-item-spacing-vertical) var(--sidebar-item-spacing-horizontal);
+    position: relative;
+    z-index: 30;
+}
+
+.sidebar-brand {
+    align-items: center;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    gap: 0.55rem;
+    justify-content: flex-start;
+    min-width: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.sidebar-brand .sidebar-logo-container {
+    flex: 0 0 auto;
+    margin: 0;
+    width: 2.2rem;
+}
+
+.sidebar-brand .sidebar-logo {
+    height: auto;
+    width: 100%;
+}
+
+body[data-theme="light"] .sidebar-brand .sidebar-logo,
+body[data-theme="light"] .mobile-header .sidebar-logo,
+body:not([data-theme="dark"]) .sidebar-brand .only-light.sidebar-logo,
+body:not([data-theme="dark"]) .mobile-header .only-light.sidebar-logo {
+    filter:
+        drop-shadow(1px 0 0 rgba(18, 24, 33, 0.34))
+        drop-shadow(-1px 0 0 rgba(18, 24, 33, 0.34))
+        drop-shadow(0 1px 0 rgba(18, 24, 33, 0.34))
+        drop-shadow(0 -1px 0 rgba(18, 24, 33, 0.34));
+}
+
+.sidebar-brand .sidebar-brand-text {
+    line-height: 1.2;
+    margin: 0;
+    padding-top: 0.1rem;
+    white-space: nowrap;
+}

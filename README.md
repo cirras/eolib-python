@@ -42,14 +42,14 @@ Utilities:
 
 ### Available Commands
 
-| Command                       | Description                                            |
-| ----------------------------- | ------------------------------------------------------ |
-| `uv build`                    | Build package                                          |
-| `uv run task test`            | Run unit tests with coverage                           |
-| `uv run task format`          | Format source files using `ruff`                       |
-| `uv run task format:check`    | Check formatting using `ruff`                          |
-| `uv run task typing`          | Check typing using `mypy`                              |
-| `uv run task docs:build`      | Build documentation using `mkdocs`                     |
-| `uv run task docs:serve`      | Build and serve documentation using `mkdocs`           |
-| `uv run task docs:deploy`     | Build and deploy documentation using `mkdocs` & `mike` |
-| `uv run task release:prepare` | Prepare and tag a new release                          |
+| Command                       | Description                                             |
+| ----------------------------- | ------------------------------------------------------- |
+| `uv build`                    | Build package                                           |
+| `uv run task test`            | Run unit tests with coverage                            |
+| `uv run task format`          | Format source files using `ruff`                        |
+| `uv run task format:check`    | Check formatting using `ruff`                           |
+| `uv run task typing`          | Check typing using `mypy`                               |
+| `uv run task docs:build`      | Build documentation using `sphinx`                      |
+| `uv run task docs:serve`      | Build and serve documentation using `sphinx`            |
+| `uv run task docs:deploy`     | Build and deploy versioned documentation using `sphinx` |
+| `uv run task release:prepare` | Prepare and tag a new release                           |

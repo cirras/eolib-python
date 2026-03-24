@@ -26,7 +26,7 @@ class PacketSequencer:
             looping back around to 0.
 
         Returns:
-            int: The next sequence value.
+            The next sequence value.
         """
         result = self._start.value + self._counter
         self._counter = (self._counter + 1) % 10

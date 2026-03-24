@@ -55,15 +55,15 @@ jobs:
       - name: Setup uv
         uses: astral-sh/setup-uv@v6
         with:
-          python-version: 3.8
+          python-version: 3.12
 
       - name: Get version from tag
         id: get-version
         run: echo "version-without-v=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
       
-      - name: Deploy documentation
+      - name: Deploy Sphinx documentation
         run: |
-          git fetch origin gh-pages --depth=1
+          git fetch origin gh-pages --depth=1 || true
           git config user.name github-actions
           git config user.email github-actions@github.com
           uv run task docs:deploy -- ${{ steps.get-version.outputs.version-without-v }} latest
