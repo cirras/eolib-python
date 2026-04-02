@@ -2,6 +2,10 @@ from enum import EnumMeta
 
 
 class ProtocolEnumMeta(EnumMeta):
+    """
+    Enum metaclass that preserves unrecognized values as synthetic enum members.
+    """
+
     def __call__(cls, value, names=None, *, module=None, qualname=None, type=None, start=1):
         if names is not None:
             return super().__call__(

@@ -29,9 +29,19 @@ class SequenceStart(ABC):
 
 
 class SimpleSequenceStart(SequenceStart):
+    """
+    A simple ``SequenceStart`` implementation backed by a single integer value.
+    """
+
     _value: int
 
     def __init__(self, value: int):
+        """
+        Creates a ``SimpleSequenceStart`` from an integer value.
+
+        Args:
+            value (int): The sequence start value.
+        """
         self._value = value
 
     @property

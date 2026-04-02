@@ -4,7 +4,14 @@ from eolib.data.string_encoding_utils import encode_string
 
 
 class EoWriter:
+    """
+    A class for writing EO data to a sequence of bytes.
+    """
+
     def __init__(self):
+        """
+        Creates a new ``EoWriter`` with no data.
+        """
         self.data = bytearray()
         self._string_sanitization_mode = False
 
