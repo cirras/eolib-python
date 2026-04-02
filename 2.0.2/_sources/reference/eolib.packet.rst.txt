@@ -1,0 +1,9 @@
+eolib.packet
+============
+
+.. automodule:: eolib.packet
+   :members:
+   :imported-members:
+   :undoc-members:
+   :show-inheritance:
+

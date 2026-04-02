@@ -1,0 +1,9 @@
+eolib.data
+==========
+
+.. automodule:: eolib.data
+   :members:
+   :imported-members:
+   :undoc-members:
+   :show-inheritance:
+

@@ -1,0 +1,15 @@
+eolib.protocol.pub
+==================
+
+.. automodule:: eolib.protocol.pub
+   :members:
+   :imported-members:
+   :undoc-members:
+   :show-inheritance:
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+
+   server <eolib.protocol.pub.server>
+

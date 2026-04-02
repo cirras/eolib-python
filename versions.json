@@ -5,7 +5,7 @@
     "aliases": [
       "latest"
     ],
-    "builder": "mkdocs"
+    "builder": "sphinx"
   },
   {
     "version": "2.0.1",

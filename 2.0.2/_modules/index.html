@@ -1,0 +1,849 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html">
+        <link rel="prefetch" href="../_static/logo.svg" as="image">
+
+    <link rel="shortcut icon" href="../_static/logo.svg"><!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Overview: module code - EOLib 2.0.2</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/localtoc.css?v=e7a6afab" />
+    <link rel="stylesheet" type="text/css" href="../_static/brand.css?v=3c7ea150" />
+    <link rel="stylesheet" type="text/css" href="../_static/api.css?v=11496004" />
+    <link rel="stylesheet" type="text/css" href="../_static/version-picker.css?v=cabf4835" />
+    <link rel="stylesheet" type="text/css" href="../_static/version-warning.css?v=12d2d6e3" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+<div class="announcement">
+  <aside class="announcement-content">
+    
+<div class="eolib-version-warning" data-eolib-version-warning hidden>
+  <span class="eolib-version-warning-text">
+    You're not viewing the latest version.
+  </span>
+  <a
+    class="eolib-version-warning-link"
+    href="#"
+    data-eolib-version-warning-link
+  >
+    Click here to go to latest.
+  </a>
+</div>
+
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">EOLib 2.0.2</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><div class="sidebar-brand-row">
+  <a class="sidebar-brand" href="../index.html">
+    <div class="sidebar-logo-container">
+      <img class="sidebar-logo" src="../_static/logo.svg" alt="Logo"/>
+    </div>
+    
+    <span class="sidebar-brand-text">EOLib</span>
+  </a>
+  <div
+  class="sidebar-version-picker-container"
+  data-eolib-version-picker
+  data-current-version="2.0.2"
+  data-current-builder="sphinx"
+  data-page-name="_modules/index"
+  data-version-root="../index.html"
+>
+  <label class="visually-hidden" for="sidebar-version-picker-button">
+    Version
+  </label>
+  <div class="sidebar-version-picker-control">
+    <button
+      id="sidebar-version-picker-button"
+      class="sidebar-version-picker"
+      type="button"
+      data-eolib-version-button
+      aria-haspopup="listbox"
+      aria-expanded="false"
+      aria-label="Version"
+    >
+      <span data-eolib-version-current>2.0.2</span>
+    </button>
+    <ul
+      class="sidebar-version-picker-menu"
+      data-eolib-version-menu
+      role="listbox"
+      aria-labelledby="sidebar-version-picker-button"
+      hidden
+    ></ul>
+  </div>
+</div>
+</div><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/eolib.html">eolib</a><input aria-label="Toggle navigation of eolib" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/eolib.data.html">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/eolib.encrypt.html">encrypt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/eolib.packet.html">packet</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/eolib.protocol.html">protocol</a><input aria-label="Toggle navigation of protocol" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/eolib.protocol.map.html">map</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/eolib.protocol.net.html">net</a><input aria-label="Toggle navigation of net" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/eolib.protocol.net.client.html">client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/eolib.protocol.net.server.html">server</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/eolib.protocol.pub.html">pub</a><input aria-label="Toggle navigation of pub" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/eolib.protocol.pub.server.html">server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>All modules for which code is available</h1>
+<ul><li><a href="eolib/data/eo_reader.html">eolib.data.eo_reader</a></li>
+<li><a href="eolib/data/eo_writer.html">eolib.data.eo_writer</a></li>
+<li><a href="eolib/data/number_encoding_utils.html">eolib.data.number_encoding_utils</a></li>
+<li><a href="eolib/data/string_encoding_utils.html">eolib.data.string_encoding_utils</a></li>
+<li><a href="eolib/encrypt/encryption_utils.html">eolib.encrypt.encryption_utils</a></li>
+<li><a href="eolib/encrypt/server_verification_utils.html">eolib.encrypt.server_verification_utils</a></li>
+<li><a href="eolib/packet/packet_sequencer.html">eolib.packet.packet_sequencer</a></li>
+<li><a href="eolib/packet/sequence_start.html">eolib.packet.sequence_start</a></li>
+<li><a href="eolib/protocol/_generated/admin_level.html">eolib.protocol.admin_level</a></li>
+<li><a href="eolib/protocol/_generated/coords.html">eolib.protocol.coords</a></li>
+<li><a href="eolib/protocol/_generated/direction.html">eolib.protocol.direction</a></li>
+<li><a href="eolib/protocol/_generated/emote.html">eolib.protocol.emote</a></li>
+<li><a href="eolib/protocol/_generated/gender.html">eolib.protocol.gender</a></li>
+<li><a href="eolib/protocol/_generated/map/emf.html">eolib.protocol.map.emf</a></li>
+<li><a href="eolib/protocol/_generated/map/map_graphic_layer.html">eolib.protocol.map.map_graphic_layer</a></li>
+<li><a href="eolib/protocol/_generated/map/map_graphic_row.html">eolib.protocol.map.map_graphic_row</a></li>
+<li><a href="eolib/protocol/_generated/map/map_graphic_row_tile.html">eolib.protocol.map.map_graphic_row_tile</a></li>
+<li><a href="eolib/protocol/_generated/map/map_item.html">eolib.protocol.map.map_item</a></li>
+<li><a href="eolib/protocol/_generated/map/map_legacy_door_key.html">eolib.protocol.map.map_legacy_door_key</a></li>
+<li><a href="eolib/protocol/_generated/map/map_music_control.html">eolib.protocol.map.map_music_control</a></li>
+<li><a href="eolib/protocol/_generated/map/map_npc.html">eolib.protocol.map.map_npc</a></li>
+<li><a href="eolib/protocol/_generated/map/map_sign.html">eolib.protocol.map.map_sign</a></li>
+<li><a href="eolib/protocol/_generated/map/map_tile_spec.html">eolib.protocol.map.map_tile_spec</a></li>
+<li><a href="eolib/protocol/_generated/map/map_tile_spec_row.html">eolib.protocol.map.map_tile_spec_row</a></li>
+<li><a href="eolib/protocol/_generated/map/map_tile_spec_row_tile.html">eolib.protocol.map.map_tile_spec_row_tile</a></li>
+<li><a href="eolib/protocol/_generated/map/map_timed_effect.html">eolib.protocol.map.map_timed_effect</a></li>
+<li><a href="eolib/protocol/_generated/map/map_type.html">eolib.protocol.map.map_type</a></li>
+<li><a href="eolib/protocol/_generated/map/map_warp.html">eolib.protocol.map.map_warp</a></li>
+<li><a href="eolib/protocol/_generated/map/map_warp_row.html">eolib.protocol.map.map_warp_row</a></li>
+<li><a href="eolib/protocol/_generated/map/map_warp_row_tile.html">eolib.protocol.map.map_warp_row_tile</a></li>
+<li><a href="eolib/protocol/_generated/net/char_item.html">eolib.protocol.net.char_item</a></li>
+<li><a href="eolib/protocol/_generated/net/client/account_agree_client_packet.html">eolib.protocol.net.client.account_agree_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/account_create_client_packet.html">eolib.protocol.net.client.account_create_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/account_request_client_packet.html">eolib.protocol.net.client.account_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/admin_interact_report_client_packet.html">eolib.protocol.net.client.admin_interact_report_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/admin_interact_tell_client_packet.html">eolib.protocol.net.client.admin_interact_tell_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/attack_use_client_packet.html">eolib.protocol.net.client.attack_use_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/bank_add_client_packet.html">eolib.protocol.net.client.bank_add_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/bank_open_client_packet.html">eolib.protocol.net.client.bank_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/bank_take_client_packet.html">eolib.protocol.net.client.bank_take_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/barber_buy_client_packet.html">eolib.protocol.net.client.barber_buy_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/barber_open_client_packet.html">eolib.protocol.net.client.barber_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/board_create_client_packet.html">eolib.protocol.net.client.board_create_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/board_open_client_packet.html">eolib.protocol.net.client.board_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/board_remove_client_packet.html">eolib.protocol.net.client.board_remove_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/board_take_client_packet.html">eolib.protocol.net.client.board_take_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/book_request_client_packet.html">eolib.protocol.net.client.book_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/byte_coords.html">eolib.protocol.net.client.byte_coords</a></li>
+<li><a href="eolib/protocol/_generated/net/client/chair_request_client_packet.html">eolib.protocol.net.client.chair_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/character_create_client_packet.html">eolib.protocol.net.client.character_create_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/character_remove_client_packet.html">eolib.protocol.net.client.character_remove_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/character_request_client_packet.html">eolib.protocol.net.client.character_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/character_take_client_packet.html">eolib.protocol.net.client.character_take_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/chest_add_client_packet.html">eolib.protocol.net.client.chest_add_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/chest_open_client_packet.html">eolib.protocol.net.client.chest_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/chest_take_client_packet.html">eolib.protocol.net.client.chest_take_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/citizen_accept_client_packet.html">eolib.protocol.net.client.citizen_accept_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/citizen_open_client_packet.html">eolib.protocol.net.client.citizen_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/citizen_remove_client_packet.html">eolib.protocol.net.client.citizen_remove_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/citizen_reply_client_packet.html">eolib.protocol.net.client.citizen_reply_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/citizen_request_client_packet.html">eolib.protocol.net.client.citizen_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/connection_accept_client_packet.html">eolib.protocol.net.client.connection_accept_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/connection_ping_client_packet.html">eolib.protocol.net.client.connection_ping_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/dialog_reply.html">eolib.protocol.net.client.dialog_reply</a></li>
+<li><a href="eolib/protocol/_generated/net/client/door_open_client_packet.html">eolib.protocol.net.client.door_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/emote_report_client_packet.html">eolib.protocol.net.client.emote_report_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/face_player_client_packet.html">eolib.protocol.net.client.face_player_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/file_type.html">eolib.protocol.net.client.file_type</a></li>
+<li><a href="eolib/protocol/_generated/net/client/global_close_client_packet.html">eolib.protocol.net.client.global_close_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/global_open_client_packet.html">eolib.protocol.net.client.global_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/global_player_client_packet.html">eolib.protocol.net.client.global_player_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/global_remove_client_packet.html">eolib.protocol.net.client.global_remove_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_accept_client_packet.html">eolib.protocol.net.client.guild_accept_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_agree_client_packet.html">eolib.protocol.net.client.guild_agree_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_buy_client_packet.html">eolib.protocol.net.client.guild_buy_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_create_client_packet.html">eolib.protocol.net.client.guild_create_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_info_type.html">eolib.protocol.net.client.guild_info_type</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_junk_client_packet.html">eolib.protocol.net.client.guild_junk_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_kick_client_packet.html">eolib.protocol.net.client.guild_kick_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_open_client_packet.html">eolib.protocol.net.client.guild_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_player_client_packet.html">eolib.protocol.net.client.guild_player_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_rank_client_packet.html">eolib.protocol.net.client.guild_rank_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_remove_client_packet.html">eolib.protocol.net.client.guild_remove_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_report_client_packet.html">eolib.protocol.net.client.guild_report_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_request_client_packet.html">eolib.protocol.net.client.guild_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_take_client_packet.html">eolib.protocol.net.client.guild_take_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_tell_client_packet.html">eolib.protocol.net.client.guild_tell_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/guild_use_client_packet.html">eolib.protocol.net.client.guild_use_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/init_init_client_packet.html">eolib.protocol.net.client.init_init_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/item_drop_client_packet.html">eolib.protocol.net.client.item_drop_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/item_get_client_packet.html">eolib.protocol.net.client.item_get_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/item_junk_client_packet.html">eolib.protocol.net.client.item_junk_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/item_use_client_packet.html">eolib.protocol.net.client.item_use_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/jukebox_msg_client_packet.html">eolib.protocol.net.client.jukebox_msg_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/jukebox_open_client_packet.html">eolib.protocol.net.client.jukebox_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/jukebox_use_client_packet.html">eolib.protocol.net.client.jukebox_use_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/locker_add_client_packet.html">eolib.protocol.net.client.locker_add_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/locker_buy_client_packet.html">eolib.protocol.net.client.locker_buy_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/locker_open_client_packet.html">eolib.protocol.net.client.locker_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/locker_take_client_packet.html">eolib.protocol.net.client.locker_take_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/login_request_client_packet.html">eolib.protocol.net.client.login_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/marriage_open_client_packet.html">eolib.protocol.net.client.marriage_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/marriage_request_client_packet.html">eolib.protocol.net.client.marriage_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/marriage_request_type.html">eolib.protocol.net.client.marriage_request_type</a></li>
+<li><a href="eolib/protocol/_generated/net/client/message_ping_client_packet.html">eolib.protocol.net.client.message_ping_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/npc_range_request_client_packet.html">eolib.protocol.net.client.npc_range_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/paperdoll_add_client_packet.html">eolib.protocol.net.client.paperdoll_add_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/paperdoll_remove_client_packet.html">eolib.protocol.net.client.paperdoll_remove_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/paperdoll_request_client_packet.html">eolib.protocol.net.client.paperdoll_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/party_accept_client_packet.html">eolib.protocol.net.client.party_accept_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/party_remove_client_packet.html">eolib.protocol.net.client.party_remove_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/party_request_client_packet.html">eolib.protocol.net.client.party_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/party_take_client_packet.html">eolib.protocol.net.client.party_take_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/player_range_request_client_packet.html">eolib.protocol.net.client.player_range_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/players_accept_client_packet.html">eolib.protocol.net.client.players_accept_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/players_list_client_packet.html">eolib.protocol.net.client.players_list_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/players_request_client_packet.html">eolib.protocol.net.client.players_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/priest_accept_client_packet.html">eolib.protocol.net.client.priest_accept_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/priest_open_client_packet.html">eolib.protocol.net.client.priest_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/priest_request_client_packet.html">eolib.protocol.net.client.priest_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/priest_use_client_packet.html">eolib.protocol.net.client.priest_use_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/quest_accept_client_packet.html">eolib.protocol.net.client.quest_accept_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/quest_list_client_packet.html">eolib.protocol.net.client.quest_list_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/quest_use_client_packet.html">eolib.protocol.net.client.quest_use_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/range_request_client_packet.html">eolib.protocol.net.client.range_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/refresh_request_client_packet.html">eolib.protocol.net.client.refresh_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/shop_buy_client_packet.html">eolib.protocol.net.client.shop_buy_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/shop_create_client_packet.html">eolib.protocol.net.client.shop_create_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/shop_open_client_packet.html">eolib.protocol.net.client.shop_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/shop_sell_client_packet.html">eolib.protocol.net.client.shop_sell_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/sit_action.html">eolib.protocol.net.client.sit_action</a></li>
+<li><a href="eolib/protocol/_generated/net/client/sit_request_client_packet.html">eolib.protocol.net.client.sit_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/spell_request_client_packet.html">eolib.protocol.net.client.spell_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/spell_target_group_client_packet.html">eolib.protocol.net.client.spell_target_group_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/spell_target_other_client_packet.html">eolib.protocol.net.client.spell_target_other_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/spell_target_self_client_packet.html">eolib.protocol.net.client.spell_target_self_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/spell_target_type.html">eolib.protocol.net.client.spell_target_type</a></li>
+<li><a href="eolib/protocol/_generated/net/client/spell_use_client_packet.html">eolib.protocol.net.client.spell_use_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/stat_id.html">eolib.protocol.net.client.stat_id</a></li>
+<li><a href="eolib/protocol/_generated/net/client/stat_skill_add_client_packet.html">eolib.protocol.net.client.stat_skill_add_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/stat_skill_junk_client_packet.html">eolib.protocol.net.client.stat_skill_junk_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/stat_skill_open_client_packet.html">eolib.protocol.net.client.stat_skill_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/stat_skill_remove_client_packet.html">eolib.protocol.net.client.stat_skill_remove_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/stat_skill_take_client_packet.html">eolib.protocol.net.client.stat_skill_take_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/talk_admin_client_packet.html">eolib.protocol.net.client.talk_admin_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/talk_announce_client_packet.html">eolib.protocol.net.client.talk_announce_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/talk_msg_client_packet.html">eolib.protocol.net.client.talk_msg_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/talk_open_client_packet.html">eolib.protocol.net.client.talk_open_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/talk_player_client_packet.html">eolib.protocol.net.client.talk_player_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/talk_report_client_packet.html">eolib.protocol.net.client.talk_report_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/talk_request_client_packet.html">eolib.protocol.net.client.talk_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/talk_tell_client_packet.html">eolib.protocol.net.client.talk_tell_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/talk_use_client_packet.html">eolib.protocol.net.client.talk_use_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/trade_accept_client_packet.html">eolib.protocol.net.client.trade_accept_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/trade_add_client_packet.html">eolib.protocol.net.client.trade_add_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/trade_agree_client_packet.html">eolib.protocol.net.client.trade_agree_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/trade_close_client_packet.html">eolib.protocol.net.client.trade_close_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/trade_remove_client_packet.html">eolib.protocol.net.client.trade_remove_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/trade_request_client_packet.html">eolib.protocol.net.client.trade_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/train_type.html">eolib.protocol.net.client.train_type</a></li>
+<li><a href="eolib/protocol/_generated/net/client/walk_action.html">eolib.protocol.net.client.walk_action</a></li>
+<li><a href="eolib/protocol/_generated/net/client/walk_admin_client_packet.html">eolib.protocol.net.client.walk_admin_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/walk_player_client_packet.html">eolib.protocol.net.client.walk_player_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/walk_spec_client_packet.html">eolib.protocol.net.client.walk_spec_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/warp_accept_client_packet.html">eolib.protocol.net.client.warp_accept_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/warp_take_client_packet.html">eolib.protocol.net.client.warp_take_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/welcome_agree_client_packet.html">eolib.protocol.net.client.welcome_agree_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/welcome_msg_client_packet.html">eolib.protocol.net.client.welcome_msg_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/client/welcome_request_client_packet.html">eolib.protocol.net.client.welcome_request_client_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/item.html">eolib.protocol.net.item</a></li>
+<li><a href="eolib/protocol/_generated/net/packet_action.html">eolib.protocol.net.packet_action</a></li>
+<li><a href="eolib/protocol/_generated/net/packet_family.html">eolib.protocol.net.packet_family</a></li>
+<li><a href="eolib/protocol/_generated/net/party_request_type.html">eolib.protocol.net.party_request_type</a></li>
+<li><a href="eolib/protocol/_generated/net/quest_page.html">eolib.protocol.net.quest_page</a></li>
+<li><a href="eolib/protocol/_generated/net/server/account_reply.html">eolib.protocol.net.server.account_reply</a></li>
+<li><a href="eolib/protocol/_generated/net/server/account_reply_server_packet.html">eolib.protocol.net.server.account_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/admin_interact_agree_server_packet.html">eolib.protocol.net.server.admin_interact_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/admin_interact_list_server_packet.html">eolib.protocol.net.server.admin_interact_list_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/admin_interact_remove_server_packet.html">eolib.protocol.net.server.admin_interact_remove_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/admin_interact_reply_server_packet.html">eolib.protocol.net.server.admin_interact_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/admin_interact_tell_server_packet.html">eolib.protocol.net.server.admin_interact_tell_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/admin_message_type.html">eolib.protocol.net.server.admin_message_type</a></li>
+<li><a href="eolib/protocol/_generated/net/server/arena_accept_server_packet.html">eolib.protocol.net.server.arena_accept_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/arena_drop_server_packet.html">eolib.protocol.net.server.arena_drop_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/arena_spec_server_packet.html">eolib.protocol.net.server.arena_spec_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/arena_use_server_packet.html">eolib.protocol.net.server.arena_use_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/attack_error_server_packet.html">eolib.protocol.net.server.attack_error_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/attack_player_server_packet.html">eolib.protocol.net.server.attack_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/avatar_admin_server_packet.html">eolib.protocol.net.server.avatar_admin_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/avatar_agree_server_packet.html">eolib.protocol.net.server.avatar_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/avatar_change.html">eolib.protocol.net.server.avatar_change</a></li>
+<li><a href="eolib/protocol/_generated/net/server/avatar_change_type.html">eolib.protocol.net.server.avatar_change_type</a></li>
+<li><a href="eolib/protocol/_generated/net/server/avatar_remove_server_packet.html">eolib.protocol.net.server.avatar_remove_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/avatar_reply_server_packet.html">eolib.protocol.net.server.avatar_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/bank_open_server_packet.html">eolib.protocol.net.server.bank_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/bank_reply_server_packet.html">eolib.protocol.net.server.bank_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/barber_agree_server_packet.html">eolib.protocol.net.server.barber_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/barber_open_server_packet.html">eolib.protocol.net.server.barber_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/big_coords.html">eolib.protocol.net.server.big_coords</a></li>
+<li><a href="eolib/protocol/_generated/net/server/board_open_server_packet.html">eolib.protocol.net.server.board_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/board_player_server_packet.html">eolib.protocol.net.server.board_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/board_post_listing.html">eolib.protocol.net.server.board_post_listing</a></li>
+<li><a href="eolib/protocol/_generated/net/server/book_reply_server_packet.html">eolib.protocol.net.server.book_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/cast_accept_server_packet.html">eolib.protocol.net.server.cast_accept_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/cast_reply_server_packet.html">eolib.protocol.net.server.cast_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/cast_spec_server_packet.html">eolib.protocol.net.server.cast_spec_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/chair_close_server_packet.html">eolib.protocol.net.server.chair_close_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/chair_player_server_packet.html">eolib.protocol.net.server.chair_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/chair_remove_server_packet.html">eolib.protocol.net.server.chair_remove_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/chair_reply_server_packet.html">eolib.protocol.net.server.chair_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_base_stats.html">eolib.protocol.net.server.character_base_stats</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_base_stats_welcome.html">eolib.protocol.net.server.character_base_stats_welcome</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_details.html">eolib.protocol.net.server.character_details</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_elemental_stats.html">eolib.protocol.net.server.character_elemental_stats</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_icon.html">eolib.protocol.net.server.character_icon</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_map_info.html">eolib.protocol.net.server.character_map_info</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_player_server_packet.html">eolib.protocol.net.server.character_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_reply.html">eolib.protocol.net.server.character_reply</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_reply_server_packet.html">eolib.protocol.net.server.character_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_secondary_stats.html">eolib.protocol.net.server.character_secondary_stats</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_secondary_stats_info_lookup.html">eolib.protocol.net.server.character_secondary_stats_info_lookup</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_selection_list_entry.html">eolib.protocol.net.server.character_selection_list_entry</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_stats_equipment_change.html">eolib.protocol.net.server.character_stats_equipment_change</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_stats_info_lookup.html">eolib.protocol.net.server.character_stats_info_lookup</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_stats_reset.html">eolib.protocol.net.server.character_stats_reset</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_stats_update.html">eolib.protocol.net.server.character_stats_update</a></li>
+<li><a href="eolib/protocol/_generated/net/server/character_stats_welcome.html">eolib.protocol.net.server.character_stats_welcome</a></li>
+<li><a href="eolib/protocol/_generated/net/server/chest_agree_server_packet.html">eolib.protocol.net.server.chest_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/chest_close_server_packet.html">eolib.protocol.net.server.chest_close_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/chest_get_server_packet.html">eolib.protocol.net.server.chest_get_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/chest_open_server_packet.html">eolib.protocol.net.server.chest_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/chest_reply_server_packet.html">eolib.protocol.net.server.chest_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/chest_spec_server_packet.html">eolib.protocol.net.server.chest_spec_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/citizen_accept_server_packet.html">eolib.protocol.net.server.citizen_accept_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/citizen_open_server_packet.html">eolib.protocol.net.server.citizen_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/citizen_remove_server_packet.html">eolib.protocol.net.server.citizen_remove_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/citizen_reply_server_packet.html">eolib.protocol.net.server.citizen_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/citizen_request_server_packet.html">eolib.protocol.net.server.citizen_request_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/connection_player_server_packet.html">eolib.protocol.net.server.connection_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/dialog_entry.html">eolib.protocol.net.server.dialog_entry</a></li>
+<li><a href="eolib/protocol/_generated/net/server/dialog_entry_type.html">eolib.protocol.net.server.dialog_entry_type</a></li>
+<li><a href="eolib/protocol/_generated/net/server/dialog_quest_entry.html">eolib.protocol.net.server.dialog_quest_entry</a></li>
+<li><a href="eolib/protocol/_generated/net/server/door_close_server_packet.html">eolib.protocol.net.server.door_close_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/door_open_server_packet.html">eolib.protocol.net.server.door_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/effect_admin_server_packet.html">eolib.protocol.net.server.effect_admin_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/effect_agree_server_packet.html">eolib.protocol.net.server.effect_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/effect_player_server_packet.html">eolib.protocol.net.server.effect_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/effect_report_server_packet.html">eolib.protocol.net.server.effect_report_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/effect_spec_server_packet.html">eolib.protocol.net.server.effect_spec_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/effect_target_other_server_packet.html">eolib.protocol.net.server.effect_target_other_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/effect_use_server_packet.html">eolib.protocol.net.server.effect_use_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/emote_player_server_packet.html">eolib.protocol.net.server.emote_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/equipment_change.html">eolib.protocol.net.server.equipment_change</a></li>
+<li><a href="eolib/protocol/_generated/net/server/equipment_character_select.html">eolib.protocol.net.server.equipment_character_select</a></li>
+<li><a href="eolib/protocol/_generated/net/server/equipment_map_info.html">eolib.protocol.net.server.equipment_map_info</a></li>
+<li><a href="eolib/protocol/_generated/net/server/equipment_paperdoll.html">eolib.protocol.net.server.equipment_paperdoll</a></li>
+<li><a href="eolib/protocol/_generated/net/server/equipment_welcome.html">eolib.protocol.net.server.equipment_welcome</a></li>
+<li><a href="eolib/protocol/_generated/net/server/face_player_server_packet.html">eolib.protocol.net.server.face_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/global_backfill_message.html">eolib.protocol.net.server.global_backfill_message</a></li>
+<li><a href="eolib/protocol/_generated/net/server/group_heal_target_player.html">eolib.protocol.net.server.group_heal_target_player</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_accept_server_packet.html">eolib.protocol.net.server.guild_accept_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_agree_server_packet.html">eolib.protocol.net.server.guild_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_buy_server_packet.html">eolib.protocol.net.server.guild_buy_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_create_server_packet.html">eolib.protocol.net.server.guild_create_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_kick_server_packet.html">eolib.protocol.net.server.guild_kick_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_member.html">eolib.protocol.net.server.guild_member</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_open_server_packet.html">eolib.protocol.net.server.guild_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_rank_server_packet.html">eolib.protocol.net.server.guild_rank_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_reply.html">eolib.protocol.net.server.guild_reply</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_reply_server_packet.html">eolib.protocol.net.server.guild_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_report_server_packet.html">eolib.protocol.net.server.guild_report_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_request_server_packet.html">eolib.protocol.net.server.guild_request_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_sell_server_packet.html">eolib.protocol.net.server.guild_sell_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_staff.html">eolib.protocol.net.server.guild_staff</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_take_server_packet.html">eolib.protocol.net.server.guild_take_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/guild_tell_server_packet.html">eolib.protocol.net.server.guild_tell_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/init_ban_type.html">eolib.protocol.net.server.init_ban_type</a></li>
+<li><a href="eolib/protocol/_generated/net/server/init_init_server_packet.html">eolib.protocol.net.server.init_init_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/init_reply.html">eolib.protocol.net.server.init_reply</a></li>
+<li><a href="eolib/protocol/_generated/net/server/inn_unsubscribe_reply.html">eolib.protocol.net.server.inn_unsubscribe_reply</a></li>
+<li><a href="eolib/protocol/_generated/net/server/item_accept_server_packet.html">eolib.protocol.net.server.item_accept_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/item_add_server_packet.html">eolib.protocol.net.server.item_add_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/item_agree_server_packet.html">eolib.protocol.net.server.item_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/item_drop_server_packet.html">eolib.protocol.net.server.item_drop_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/item_get_server_packet.html">eolib.protocol.net.server.item_get_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/item_junk_server_packet.html">eolib.protocol.net.server.item_junk_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/item_kick_server_packet.html">eolib.protocol.net.server.item_kick_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/item_map_info.html">eolib.protocol.net.server.item_map_info</a></li>
+<li><a href="eolib/protocol/_generated/net/server/item_obtain_server_packet.html">eolib.protocol.net.server.item_obtain_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/item_remove_server_packet.html">eolib.protocol.net.server.item_remove_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/item_reply_server_packet.html">eolib.protocol.net.server.item_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/item_spec_server_packet.html">eolib.protocol.net.server.item_spec_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/jukebox_agree_server_packet.html">eolib.protocol.net.server.jukebox_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/jukebox_msg_server_packet.html">eolib.protocol.net.server.jukebox_msg_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/jukebox_open_server_packet.html">eolib.protocol.net.server.jukebox_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/jukebox_player_server_packet.html">eolib.protocol.net.server.jukebox_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/jukebox_reply_server_packet.html">eolib.protocol.net.server.jukebox_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/jukebox_use_server_packet.html">eolib.protocol.net.server.jukebox_use_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/level_up_stats.html">eolib.protocol.net.server.level_up_stats</a></li>
+<li><a href="eolib/protocol/_generated/net/server/locker_buy_server_packet.html">eolib.protocol.net.server.locker_buy_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/locker_get_server_packet.html">eolib.protocol.net.server.locker_get_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/locker_open_server_packet.html">eolib.protocol.net.server.locker_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/locker_reply_server_packet.html">eolib.protocol.net.server.locker_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/locker_spec_server_packet.html">eolib.protocol.net.server.locker_spec_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/login_message_code.html">eolib.protocol.net.server.login_message_code</a></li>
+<li><a href="eolib/protocol/_generated/net/server/login_reply.html">eolib.protocol.net.server.login_reply</a></li>
+<li><a href="eolib/protocol/_generated/net/server/login_reply_server_packet.html">eolib.protocol.net.server.login_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/map_damage_type.html">eolib.protocol.net.server.map_damage_type</a></li>
+<li><a href="eolib/protocol/_generated/net/server/map_drain_damage_other.html">eolib.protocol.net.server.map_drain_damage_other</a></li>
+<li><a href="eolib/protocol/_generated/net/server/map_effect.html">eolib.protocol.net.server.map_effect</a></li>
+<li><a href="eolib/protocol/_generated/net/server/map_file.html">eolib.protocol.net.server.map_file</a></li>
+<li><a href="eolib/protocol/_generated/net/server/marriage_open_server_packet.html">eolib.protocol.net.server.marriage_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/marriage_reply.html">eolib.protocol.net.server.marriage_reply</a></li>
+<li><a href="eolib/protocol/_generated/net/server/marriage_reply_server_packet.html">eolib.protocol.net.server.marriage_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/message_accept_server_packet.html">eolib.protocol.net.server.message_accept_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/message_close_server_packet.html">eolib.protocol.net.server.message_close_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/message_open_server_packet.html">eolib.protocol.net.server.message_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/message_pong_server_packet.html">eolib.protocol.net.server.message_pong_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/music_player_server_packet.html">eolib.protocol.net.server.music_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/nearby_info.html">eolib.protocol.net.server.nearby_info</a></li>
+<li><a href="eolib/protocol/_generated/net/server/npc_accept_server_packet.html">eolib.protocol.net.server.npc_accept_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/npc_agree_server_packet.html">eolib.protocol.net.server.npc_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/npc_dialog_server_packet.html">eolib.protocol.net.server.npc_dialog_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/npc_junk_server_packet.html">eolib.protocol.net.server.npc_junk_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/npc_kill_steal_protection_state.html">eolib.protocol.net.server.npc_kill_steal_protection_state</a></li>
+<li><a href="eolib/protocol/_generated/net/server/npc_killed_data.html">eolib.protocol.net.server.npc_killed_data</a></li>
+<li><a href="eolib/protocol/_generated/net/server/npc_map_info.html">eolib.protocol.net.server.npc_map_info</a></li>
+<li><a href="eolib/protocol/_generated/net/server/npc_player_server_packet.html">eolib.protocol.net.server.npc_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/npc_reply_server_packet.html">eolib.protocol.net.server.npc_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/npc_spec_server_packet.html">eolib.protocol.net.server.npc_spec_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/npc_update_attack.html">eolib.protocol.net.server.npc_update_attack</a></li>
+<li><a href="eolib/protocol/_generated/net/server/npc_update_chat.html">eolib.protocol.net.server.npc_update_chat</a></li>
+<li><a href="eolib/protocol/_generated/net/server/npc_update_position.html">eolib.protocol.net.server.npc_update_position</a></li>
+<li><a href="eolib/protocol/_generated/net/server/online_player.html">eolib.protocol.net.server.online_player</a></li>
+<li><a href="eolib/protocol/_generated/net/server/paperdoll_agree_server_packet.html">eolib.protocol.net.server.paperdoll_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/paperdoll_ping_server_packet.html">eolib.protocol.net.server.paperdoll_ping_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/paperdoll_remove_server_packet.html">eolib.protocol.net.server.paperdoll_remove_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/paperdoll_reply_server_packet.html">eolib.protocol.net.server.paperdoll_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/party_add_server_packet.html">eolib.protocol.net.server.party_add_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/party_agree_server_packet.html">eolib.protocol.net.server.party_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/party_close_server_packet.html">eolib.protocol.net.server.party_close_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/party_create_server_packet.html">eolib.protocol.net.server.party_create_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/party_exp_share.html">eolib.protocol.net.server.party_exp_share</a></li>
+<li><a href="eolib/protocol/_generated/net/server/party_list_server_packet.html">eolib.protocol.net.server.party_list_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/party_member.html">eolib.protocol.net.server.party_member</a></li>
+<li><a href="eolib/protocol/_generated/net/server/party_remove_server_packet.html">eolib.protocol.net.server.party_remove_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/party_reply_code.html">eolib.protocol.net.server.party_reply_code</a></li>
+<li><a href="eolib/protocol/_generated/net/server/party_reply_server_packet.html">eolib.protocol.net.server.party_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/party_request_server_packet.html">eolib.protocol.net.server.party_request_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/party_target_group_server_packet.html">eolib.protocol.net.server.party_target_group_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/player_effect.html">eolib.protocol.net.server.player_effect</a></li>
+<li><a href="eolib/protocol/_generated/net/server/player_killed_state.html">eolib.protocol.net.server.player_killed_state</a></li>
+<li><a href="eolib/protocol/_generated/net/server/players_agree_server_packet.html">eolib.protocol.net.server.players_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/players_list.html">eolib.protocol.net.server.players_list</a></li>
+<li><a href="eolib/protocol/_generated/net/server/players_list_friends.html">eolib.protocol.net.server.players_list_friends</a></li>
+<li><a href="eolib/protocol/_generated/net/server/players_list_server_packet.html">eolib.protocol.net.server.players_list_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/players_net242_server_packet.html">eolib.protocol.net.server.players_net242_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/players_ping_server_packet.html">eolib.protocol.net.server.players_ping_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/players_pong_server_packet.html">eolib.protocol.net.server.players_pong_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/players_remove_server_packet.html">eolib.protocol.net.server.players_remove_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/players_reply_server_packet.html">eolib.protocol.net.server.players_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/priest_open_server_packet.html">eolib.protocol.net.server.priest_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/priest_reply.html">eolib.protocol.net.server.priest_reply</a></li>
+<li><a href="eolib/protocol/_generated/net/server/priest_reply_server_packet.html">eolib.protocol.net.server.priest_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/priest_request_server_packet.html">eolib.protocol.net.server.priest_request_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/pub_file.html">eolib.protocol.net.server.pub_file</a></li>
+<li><a href="eolib/protocol/_generated/net/server/quest_dialog_server_packet.html">eolib.protocol.net.server.quest_dialog_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/quest_list_server_packet.html">eolib.protocol.net.server.quest_list_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/quest_progress_entry.html">eolib.protocol.net.server.quest_progress_entry</a></li>
+<li><a href="eolib/protocol/_generated/net/server/quest_report_server_packet.html">eolib.protocol.net.server.quest_report_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/quest_requirement_icon.html">eolib.protocol.net.server.quest_requirement_icon</a></li>
+<li><a href="eolib/protocol/_generated/net/server/range_reply_server_packet.html">eolib.protocol.net.server.range_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/recover_agree_server_packet.html">eolib.protocol.net.server.recover_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/recover_list_server_packet.html">eolib.protocol.net.server.recover_list_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/recover_player_server_packet.html">eolib.protocol.net.server.recover_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/recover_reply_server_packet.html">eolib.protocol.net.server.recover_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/recover_target_group_server_packet.html">eolib.protocol.net.server.recover_target_group_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/refresh_reply_server_packet.html">eolib.protocol.net.server.refresh_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/server_settings.html">eolib.protocol.net.server.server_settings</a></li>
+<li><a href="eolib/protocol/_generated/net/server/shop_buy_server_packet.html">eolib.protocol.net.server.shop_buy_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/shop_craft_item.html">eolib.protocol.net.server.shop_craft_item</a></li>
+<li><a href="eolib/protocol/_generated/net/server/shop_create_server_packet.html">eolib.protocol.net.server.shop_create_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/shop_open_server_packet.html">eolib.protocol.net.server.shop_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/shop_sell_server_packet.html">eolib.protocol.net.server.shop_sell_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/shop_sold_item.html">eolib.protocol.net.server.shop_sold_item</a></li>
+<li><a href="eolib/protocol/_generated/net/server/shop_trade_item.html">eolib.protocol.net.server.shop_trade_item</a></li>
+<li><a href="eolib/protocol/_generated/net/server/sit_close_server_packet.html">eolib.protocol.net.server.sit_close_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/sit_player_server_packet.html">eolib.protocol.net.server.sit_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/sit_remove_server_packet.html">eolib.protocol.net.server.sit_remove_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/sit_reply_server_packet.html">eolib.protocol.net.server.sit_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/sit_state.html">eolib.protocol.net.server.sit_state</a></li>
+<li><a href="eolib/protocol/_generated/net/server/skill_learn.html">eolib.protocol.net.server.skill_learn</a></li>
+<li><a href="eolib/protocol/_generated/net/server/skill_master_reply.html">eolib.protocol.net.server.skill_master_reply</a></li>
+<li><a href="eolib/protocol/_generated/net/server/skill_stat_requirements.html">eolib.protocol.net.server.skill_stat_requirements</a></li>
+<li><a href="eolib/protocol/_generated/net/server/spell_error_server_packet.html">eolib.protocol.net.server.spell_error_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/spell_player_server_packet.html">eolib.protocol.net.server.spell_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/spell_reply_server_packet.html">eolib.protocol.net.server.spell_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/spell_request_server_packet.html">eolib.protocol.net.server.spell_request_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/spell_target_group_server_packet.html">eolib.protocol.net.server.spell_target_group_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/spell_target_other_server_packet.html">eolib.protocol.net.server.spell_target_other_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/spell_target_self_server_packet.html">eolib.protocol.net.server.spell_target_self_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/stat_skill_accept_server_packet.html">eolib.protocol.net.server.stat_skill_accept_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/stat_skill_junk_server_packet.html">eolib.protocol.net.server.stat_skill_junk_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/stat_skill_open_server_packet.html">eolib.protocol.net.server.stat_skill_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/stat_skill_player_server_packet.html">eolib.protocol.net.server.stat_skill_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/stat_skill_remove_server_packet.html">eolib.protocol.net.server.stat_skill_remove_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/stat_skill_reply_server_packet.html">eolib.protocol.net.server.stat_skill_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/stat_skill_take_server_packet.html">eolib.protocol.net.server.stat_skill_take_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/talk_admin_server_packet.html">eolib.protocol.net.server.talk_admin_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/talk_announce_server_packet.html">eolib.protocol.net.server.talk_announce_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/talk_list_server_packet.html">eolib.protocol.net.server.talk_list_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/talk_msg_server_packet.html">eolib.protocol.net.server.talk_msg_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/talk_open_server_packet.html">eolib.protocol.net.server.talk_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/talk_player_server_packet.html">eolib.protocol.net.server.talk_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/talk_reply.html">eolib.protocol.net.server.talk_reply</a></li>
+<li><a href="eolib/protocol/_generated/net/server/talk_reply_server_packet.html">eolib.protocol.net.server.talk_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/talk_request_server_packet.html">eolib.protocol.net.server.talk_request_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/talk_server_server_packet.html">eolib.protocol.net.server.talk_server_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/talk_spec_server_packet.html">eolib.protocol.net.server.talk_spec_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/talk_tell_server_packet.html">eolib.protocol.net.server.talk_tell_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/tile_effect.html">eolib.protocol.net.server.tile_effect</a></li>
+<li><a href="eolib/protocol/_generated/net/server/trade_admin_server_packet.html">eolib.protocol.net.server.trade_admin_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/trade_agree_server_packet.html">eolib.protocol.net.server.trade_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/trade_close_server_packet.html">eolib.protocol.net.server.trade_close_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/trade_item_data.html">eolib.protocol.net.server.trade_item_data</a></li>
+<li><a href="eolib/protocol/_generated/net/server/trade_open_server_packet.html">eolib.protocol.net.server.trade_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/trade_reply_server_packet.html">eolib.protocol.net.server.trade_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/trade_request_server_packet.html">eolib.protocol.net.server.trade_request_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/trade_spec_server_packet.html">eolib.protocol.net.server.trade_spec_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/trade_use_server_packet.html">eolib.protocol.net.server.trade_use_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/walk_close_server_packet.html">eolib.protocol.net.server.walk_close_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/walk_open_server_packet.html">eolib.protocol.net.server.walk_open_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/walk_player_server_packet.html">eolib.protocol.net.server.walk_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/walk_reply_server_packet.html">eolib.protocol.net.server.walk_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/warp_agree_server_packet.html">eolib.protocol.net.server.warp_agree_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/warp_create_server_packet.html">eolib.protocol.net.server.warp_create_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/warp_effect.html">eolib.protocol.net.server.warp_effect</a></li>
+<li><a href="eolib/protocol/_generated/net/server/warp_player_server_packet.html">eolib.protocol.net.server.warp_player_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/warp_request_server_packet.html">eolib.protocol.net.server.warp_request_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/warp_type.html">eolib.protocol.net.server.warp_type</a></li>
+<li><a href="eolib/protocol/_generated/net/server/welcome_code.html">eolib.protocol.net.server.welcome_code</a></li>
+<li><a href="eolib/protocol/_generated/net/server/welcome_net242_server_packet.html">eolib.protocol.net.server.welcome_net242_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/welcome_net243_server_packet.html">eolib.protocol.net.server.welcome_net243_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/welcome_net244_server_packet.html">eolib.protocol.net.server.welcome_net244_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/welcome_ping_server_packet.html">eolib.protocol.net.server.welcome_ping_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/welcome_pong_server_packet.html">eolib.protocol.net.server.welcome_pong_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/server/welcome_reply_server_packet.html">eolib.protocol.net.server.welcome_reply_server_packet</a></li>
+<li><a href="eolib/protocol/_generated/net/spell.html">eolib.protocol.net.spell</a></li>
+<li><a href="eolib/protocol/_generated/net/three_item.html">eolib.protocol.net.three_item</a></li>
+<li><a href="eolib/protocol/_generated/net/version.html">eolib.protocol.net.version</a></li>
+<li><a href="eolib/protocol/_generated/net/weight.html">eolib.protocol.net.weight</a></li>
+<li><a href="eolib/protocol/_generated/pub/ecf.html">eolib.protocol.pub.ecf</a></li>
+<li><a href="eolib/protocol/_generated/pub/ecf_record.html">eolib.protocol.pub.ecf_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/eif.html">eolib.protocol.pub.eif</a></li>
+<li><a href="eolib/protocol/_generated/pub/eif_record.html">eolib.protocol.pub.eif_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/element.html">eolib.protocol.pub.element</a></li>
+<li><a href="eolib/protocol/_generated/pub/enf.html">eolib.protocol.pub.enf</a></li>
+<li><a href="eolib/protocol/_generated/pub/enf_record.html">eolib.protocol.pub.enf_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/esf.html">eolib.protocol.pub.esf</a></li>
+<li><a href="eolib/protocol/_generated/pub/esf_record.html">eolib.protocol.pub.esf_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/item_size.html">eolib.protocol.pub.item_size</a></li>
+<li><a href="eolib/protocol/_generated/pub/item_special.html">eolib.protocol.pub.item_special</a></li>
+<li><a href="eolib/protocol/_generated/pub/item_subtype.html">eolib.protocol.pub.item_subtype</a></li>
+<li><a href="eolib/protocol/_generated/pub/item_type.html">eolib.protocol.pub.item_type</a></li>
+<li><a href="eolib/protocol/_generated/pub/npc_type.html">eolib.protocol.pub.npc_type</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/drop_file.html">eolib.protocol.pub.server.drop_file</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/drop_npc_record.html">eolib.protocol.pub.server.drop_npc_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/drop_record.html">eolib.protocol.pub.server.drop_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/inn_file.html">eolib.protocol.pub.server.inn_file</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/inn_question_record.html">eolib.protocol.pub.server.inn_question_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/inn_record.html">eolib.protocol.pub.server.inn_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/shop_craft_ingredient_record.html">eolib.protocol.pub.server.shop_craft_ingredient_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/shop_craft_record.html">eolib.protocol.pub.server.shop_craft_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/shop_file.html">eolib.protocol.pub.server.shop_file</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/shop_record.html">eolib.protocol.pub.server.shop_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/shop_trade_record.html">eolib.protocol.pub.server.shop_trade_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/skill_master_file.html">eolib.protocol.pub.server.skill_master_file</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/skill_master_record.html">eolib.protocol.pub.server.skill_master_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/skill_master_skill_record.html">eolib.protocol.pub.server.skill_master_skill_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/talk_file.html">eolib.protocol.pub.server.talk_file</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/talk_message_record.html">eolib.protocol.pub.server.talk_message_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/server/talk_record.html">eolib.protocol.pub.server.talk_record</a></li>
+<li><a href="eolib/protocol/_generated/pub/skill_nature.html">eolib.protocol.pub.skill_nature</a></li>
+<li><a href="eolib/protocol/_generated/pub/skill_target_restrict.html">eolib.protocol.pub.skill_target_restrict</a></li>
+<li><a href="eolib/protocol/_generated/pub/skill_target_type.html">eolib.protocol.pub.skill_target_type</a></li>
+<li><a href="eolib/protocol/_generated/pub/skill_type.html">eolib.protocol.pub.skill_type</a></li>
+<li><a href="eolib/protocol/net/packet.html">eolib.protocol.net.packet</a></li>
+<li><a href="eolib/protocol/protocol_enum_meta.html">eolib.protocol.protocol_enum_meta</a></li>
+<li><a href="eolib/protocol/serialization_error.html">eolib.protocol.serialization_error</a></li>
+</ul>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Jonah Jeleniewski
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/cirras/eolib-python" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+                    0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01
+                    1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+                    0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27
+                    2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+                    1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2
+                    0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=f0042b85"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/version-picker.js?v=93b62869"></script>
+    <script src="../_static/sidebar-nav.js?v=983aa642"></script>
+    </body>
+</html>

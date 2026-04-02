@@ -1,0 +1,18 @@
+body {
+    --color-api-name: #b45309;
+    --color-api-pre-name: #b45309;
+}
+
+@media not print {
+    body[data-theme="dark"] {
+        --color-api-name: #ffb454;
+        --color-api-pre-name: #ffb454;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body:not([data-theme="light"]) {
+            --color-api-name: #ffb454;
+            --color-api-pre-name: #ffb454;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+eolib
+=====
+
+.. automodule:: eolib
+   :no-members:
+   :no-undoc-members:
+   :no-special-members:
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+
+   data <eolib.data>
+   encrypt <eolib.encrypt>
+   packet <eolib.packet>
+   protocol <eolib.protocol>
+

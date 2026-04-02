@@ -1,0 +1,52 @@
+.announcement {
+  display: none;
+}
+
+.announcement[data-eolib-version-warning-active="true"] {
+  align-items: center;
+  background: #fff7a6;
+  color: #1f2328;
+  display: flex;
+  min-height: var(--header-height);
+}
+
+.announcement[data-eolib-version-warning-active="true"] .announcement-content {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  white-space: normal;
+}
+
+.eolib-version-warning {
+  align-items: baseline;
+  column-gap: 0.35rem;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.announcement[data-eolib-version-warning-active="true"] .announcement-content .eolib-version-warning-link,
+.announcement[data-eolib-version-warning-active="true"] .announcement-content .eolib-version-warning-link:visited {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  transition: text-decoration-color 120ms ease, text-decoration-thickness 120ms ease;
+}
+
+.announcement[data-eolib-version-warning-active="true"] .announcement-content .eolib-version-warning-link:hover,
+.announcement[data-eolib-version-warning-active="true"] .announcement-content .eolib-version-warning-link:focus,
+.announcement[data-eolib-version-warning-active="true"] .announcement-content .eolib-version-warning-link:visited:hover,
+.announcement[data-eolib-version-warning-active="true"] .announcement-content .eolib-version-warning-link:visited:focus {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  text-decoration-skip-ink: auto;
+}
+
+@media (max-width: 46em) {
+  .announcement[data-eolib-version-warning-active="true"] .announcement-content {
+    padding: 0.625rem 0.875rem;
+  }
+}

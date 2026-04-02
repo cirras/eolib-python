@@ -1,0 +1,16 @@
+eolib.protocol.net
+==================
+
+.. automodule:: eolib.protocol.net
+   :members:
+   :imported-members:
+   :undoc-members:
+   :show-inheritance:
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+
+   client <eolib.protocol.net.client>
+   server <eolib.protocol.net.server>
+

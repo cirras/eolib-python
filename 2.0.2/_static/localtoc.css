@@ -1,0 +1,12 @@
+.toc-tree > ul > li > ul {
+  display: block;
+}
+
+.toc-tree > ul > li > ul > li > ul {
+  display: none;
+}
+
+.toc-tree li.scroll-current > ul,
+.toc-tree li:has(li.scroll-current) > ul {
+  display: block;
+}

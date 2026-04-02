@@ -1,0 +1,871 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="eolib.encrypt" href="eolib.encrypt.html"><link rel="prev" title="eolib" href="eolib.html">
+        <link rel="prefetch" href="../_static/logo.svg" as="image">
+
+    <link rel="shortcut icon" href="../_static/logo.svg"><!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>eolib.data - EOLib 2.0.2</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/localtoc.css?v=e7a6afab" />
+    <link rel="stylesheet" type="text/css" href="../_static/brand.css?v=3c7ea150" />
+    <link rel="stylesheet" type="text/css" href="../_static/api.css?v=11496004" />
+    <link rel="stylesheet" type="text/css" href="../_static/version-picker.css?v=cabf4835" />
+    <link rel="stylesheet" type="text/css" href="../_static/version-warning.css?v=12d2d6e3" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+<div class="announcement">
+  <aside class="announcement-content">
+    
+<div class="eolib-version-warning" data-eolib-version-warning hidden>
+  <span class="eolib-version-warning-text">
+    You're not viewing the latest version.
+  </span>
+  <a
+    class="eolib-version-warning-link"
+    href="#"
+    data-eolib-version-warning-link
+  >
+    Click here to go to latest.
+  </a>
+</div>
+
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">EOLib 2.0.2</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><div class="sidebar-brand-row">
+  <a class="sidebar-brand" href="../index.html">
+    <div class="sidebar-logo-container">
+      <img class="sidebar-logo" src="../_static/logo.svg" alt="Logo"/>
+    </div>
+    
+    <span class="sidebar-brand-text">EOLib</span>
+  </a>
+  <div
+  class="sidebar-version-picker-container"
+  data-eolib-version-picker
+  data-current-version="2.0.2"
+  data-current-builder="sphinx"
+  data-page-name="reference/eolib.data"
+  data-version-root="../index.html"
+>
+  <label class="visually-hidden" for="sidebar-version-picker-button">
+    Version
+  </label>
+  <div class="sidebar-version-picker-control">
+    <button
+      id="sidebar-version-picker-button"
+      class="sidebar-version-picker"
+      type="button"
+      data-eolib-version-button
+      aria-haspopup="listbox"
+      aria-expanded="false"
+      aria-label="Version"
+    >
+      <span data-eolib-version-current>2.0.2</span>
+    </button>
+    <ul
+      class="sidebar-version-picker-menu"
+      data-eolib-version-menu
+      role="listbox"
+      aria-labelledby="sidebar-version-picker-button"
+      hidden
+    ></ul>
+  </div>
+</div>
+</div><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="eolib.html">eolib</a><input aria-label="Toggle navigation of eolib" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eolib.encrypt.html">encrypt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eolib.packet.html">packet</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="eolib.protocol.html">protocol</a><input aria-label="Toggle navigation of protocol" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="eolib.protocol.map.html">map</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="eolib.protocol.net.html">net</a><input aria-label="Toggle navigation of net" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="eolib.protocol.net.client.html">client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eolib.protocol.net.server.html">server</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="eolib.protocol.pub.html">pub</a><input aria-label="Toggle navigation of pub" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="eolib.protocol.pub.server.html">server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="module-eolib.data">
+<span id="eolib-data"></span><h1>eolib.data<a class="headerlink" href="#module-eolib.data" title="Link to this heading">¶</a></h1>
+<p>Utilities to read and write EO data types.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="eolib.data.EoReader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">EoReader</span></span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A class for reading EO data from a sequence of bytes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">EoReader</span></code> features a chunked reading mode, which is important for accurate emulation of
+the official game client.</p>
+<p>See the <a class="reference external" href="https://github.com/Cirras/eo-protocol/blob/master/docs/chunks.md">chunked reading documentation</a> for more information.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoReader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a new <cite>EoReader</cite> instance for the specified data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The byte array containing the input data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoReader.slice">
+<span class="sig-name descname"><span class="pre">slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#eolib.data.EoReader" title="eolib.data.eo_reader.EoReader"><span class="pre">EoReader</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader.slice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader.slice" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a new <cite>EoReader</cite> whose input data is a shared subsequence of this reader’s
+data.</p>
+<p>The input data of the new reader will start at position <cite>index</cite> in this reader and contain
+up to <cite>length</cite> bytes. The two reader’s position and chunked reading mode will be
+independent.</p>
+<p>The new reader’s position will be zero, and its chunked reading mode will be false.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>, default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – The position in this reader at which the data of the new reader
+will start; must be non-negative. Defaults to the current reader position.</p></li>
+<li><p><strong>length</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>, default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – The length of the shared subsequence of data to supply to the
+new reader; must be non-negative. Defaults to the length of the remaining data
+starting from <cite>index</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The new reader.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If <cite>index</cite> or <cite>length</cite> is negative.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoReader.get_byte">
+<span class="sig-name descname"><span class="pre">get_byte</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader.get_byte"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader.get_byte" title="Link to this definition">¶</a></dt>
+<dd><p>Reads a raw byte from the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A raw byte.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoReader.get_bytes">
+<span class="sig-name descname"><span class="pre">get_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytearray" title="(in Python v3.14)"><span class="pre">bytearray</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader.get_bytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader.get_bytes" title="Link to this definition">¶</a></dt>
+<dd><p>Reads an array of raw bytes from the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The number of bytes to read.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An array of raw bytes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoReader.get_char">
+<span class="sig-name descname"><span class="pre">get_char</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader.get_char"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader.get_char" title="Link to this definition">¶</a></dt>
+<dd><p>Reads an encoded 1-byte integer from the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A decoded 1-byte integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoReader.get_short">
+<span class="sig-name descname"><span class="pre">get_short</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader.get_short"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader.get_short" title="Link to this definition">¶</a></dt>
+<dd><p>Reads an encoded 2-byte integer from the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A decoded 2-byte integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoReader.get_three">
+<span class="sig-name descname"><span class="pre">get_three</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader.get_three"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader.get_three" title="Link to this definition">¶</a></dt>
+<dd><p>Reads an encoded 3-byte integer from the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A decoded 3-byte integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoReader.get_int">
+<span class="sig-name descname"><span class="pre">get_int</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader.get_int"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader.get_int" title="Link to this definition">¶</a></dt>
+<dd><p>Reads an encoded 4-byte integer from the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A decoded 4-byte integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoReader.get_string">
+<span class="sig-name descname"><span class="pre">get_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader.get_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader.get_string" title="Link to this definition">¶</a></dt>
+<dd><p>Reads a string from the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoReader.get_fixed_string">
+<span class="sig-name descname"><span class="pre">get_fixed_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader.get_fixed_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader.get_fixed_string" title="Link to this definition">¶</a></dt>
+<dd><p>Reads a string with a fixed length from the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The length of the string.</p></li>
+<li><p><strong>padded</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – True if the string is padded with trailing <cite>0xFF</cite> bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A decoded string.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the length is negative.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoReader.get_encoded_string">
+<span class="sig-name descname"><span class="pre">get_encoded_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader.get_encoded_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader.get_encoded_string" title="Link to this definition">¶</a></dt>
+<dd><p>Reads an encoded string from the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A decoded string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoReader.get_fixed_encoded_string">
+<span class="sig-name descname"><span class="pre">get_fixed_encoded_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader.get_fixed_encoded_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader.get_fixed_encoded_string" title="Link to this definition">¶</a></dt>
+<dd><p>Reads an encoded string with a fixed length from the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The length of the string.</p></li>
+<li><p><strong>padded</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – True if the string is padded with trailing <cite>0xFF</cite> bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A decoded string.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the length is negative.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="eolib.data.EoReader.chunked_reading_mode">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">chunked_reading_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><a class="headerlink" href="#eolib.data.EoReader.chunked_reading_mode" title="Link to this definition">¶</a></dt>
+<dd><p>Gets or sets the chunked reading mode for the reader.</p>
+<p>In chunked reading mode:</p>
+<ul class="simple">
+<li><p>The reader will treat <code class="docutils literal notranslate"><span class="pre">0xFF</span></code> bytes as the end of the current chunk.</p></li>
+<li><p><a class="reference internal" href="#eolib.data.EoReader.next_chunk" title="eolib.data.EoReader.next_chunk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">next_chunk()</span></code></a> can be called to move to the next chunk.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="eolib.data.EoReader.remaining">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">remaining</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><a class="headerlink" href="#eolib.data.EoReader.remaining" title="Link to this definition">¶</a></dt>
+<dd><p>If chunked reading mode is enabled, gets the number of bytes remaining in the current
+chunk. Otherwise, gets the total number of bytes remaining in the input data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoReader.next_chunk">
+<span class="sig-name descname"><span class="pre">next_chunk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_reader.html#EoReader.next_chunk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoReader.next_chunk" title="Link to this definition">¶</a></dt>
+<dd><p>Moves the reader position to the start of the next chunk in the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – If not in chunked reading mode.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="eolib.data.EoReader.position">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><a class="headerlink" href="#eolib.data.EoReader.position" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the current position in the input data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="eolib.data.EoWriter">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">EoWriter</span></span><a class="reference internal" href="../_modules/eolib/data/eo_writer.html#EoWriter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoWriter" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A class for writing EO data to a sequence of bytes.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoWriter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eolib/data/eo_writer.html#EoWriter.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoWriter.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a new <code class="docutils literal notranslate"><span class="pre">EoWriter</span></code> with no data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoWriter.add_byte">
+<span class="sig-name descname"><span class="pre">add_byte</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_writer.html#EoWriter.add_byte"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoWriter.add_byte" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a raw byte to the writer data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The byte to add.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the value is above <cite>0xFF</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoWriter.add_bytes">
+<span class="sig-name descname"><span class="pre">add_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_writer.html#EoWriter.add_bytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoWriter.add_bytes" title="Link to this definition">¶</a></dt>
+<dd><p>Adds raw bytes to the writer data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The bytes to add.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoWriter.add_char">
+<span class="sig-name descname"><span class="pre">add_char</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_writer.html#EoWriter.add_char"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoWriter.add_char" title="Link to this definition">¶</a></dt>
+<dd><p>Adds an encoded 1-byte integer to the writer data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The number to encode and add.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the value is not below <cite>CHAR_MAX</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoWriter.add_short">
+<span class="sig-name descname"><span class="pre">add_short</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_writer.html#EoWriter.add_short"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoWriter.add_short" title="Link to this definition">¶</a></dt>
+<dd><p>Adds an encoded 2-byte integer to the writer data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The number to encode and add.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the value is not below <cite>SHORT_MAX</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoWriter.add_three">
+<span class="sig-name descname"><span class="pre">add_three</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_writer.html#EoWriter.add_three"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoWriter.add_three" title="Link to this definition">¶</a></dt>
+<dd><p>Adds an encoded 3-byte integer to the writer data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The number to encode and add.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the value is not below <cite>THREE_MAX</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoWriter.add_int">
+<span class="sig-name descname"><span class="pre">add_int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_writer.html#EoWriter.add_int"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoWriter.add_int" title="Link to this definition">¶</a></dt>
+<dd><p>Adds an encoded 4-byte integer to the writer data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The number to encode and add.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the value is not below <cite>INT_MAX</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoWriter.add_string">
+<span class="sig-name descname"><span class="pre">add_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_writer.html#EoWriter.add_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoWriter.add_string" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a string to the writer data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – The string to be added.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoWriter.add_fixed_string">
+<span class="sig-name descname"><span class="pre">add_fixed_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_writer.html#EoWriter.add_fixed_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoWriter.add_fixed_string" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a fixed-length string to the writer data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – The string to be added.</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The expected length of the string.</p></li>
+<li><p><strong>padded</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – True if the string should be padded to the length with
+trailing <cite>0xFF</cite> bytes. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoWriter.add_encoded_string">
+<span class="sig-name descname"><span class="pre">add_encoded_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_writer.html#EoWriter.add_encoded_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoWriter.add_encoded_string" title="Link to this definition">¶</a></dt>
+<dd><p>Adds an encoded string to the writer data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – The string to be encoded and added.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoWriter.add_fixed_encoded_string">
+<span class="sig-name descname"><span class="pre">add_fixed_encoded_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_writer.html#EoWriter.add_fixed_encoded_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoWriter.add_fixed_encoded_string" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a fixed-length encoded string to the writer data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – The string to be encoded and added.</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The expected length of the string.</p></li>
+<li><p><strong>padded</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – True if the string should be padded to the length with
+trailing <cite>0xFF</cite> bytes. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="eolib.data.EoWriter.string_sanitization_mode">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">string_sanitization_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><a class="headerlink" href="#eolib.data.EoWriter.string_sanitization_mode" title="Link to this definition">¶</a></dt>
+<dd><p>Whether string sanitization is enabled for the writer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eolib.data.EoWriter.to_bytearray">
+<span class="sig-name descname"><span class="pre">to_bytearray</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytearray" title="(in Python v3.14)"><span class="pre">bytearray</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/eo_writer.html#EoWriter.to_bytearray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.EoWriter.to_bytearray" title="Link to this definition">¶</a></dt>
+<dd><p>Gets the writer data as a byte array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A copy of the writer data as a byte array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eolib.data.encode_number">
+<span class="sig-name descname"><span class="pre">encode_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/number_encoding_utils.html#encode_number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.encode_number" title="Link to this definition">¶</a></dt>
+<dd><p>Encodes a number to a sequence of bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – The number to encode.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The encoded sequence of bytes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eolib.data.decode_number">
+<span class="sig-name descname"><span class="pre">decode_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">encoded_number</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/number_encoding_utils.html#decode_number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.decode_number" title="Link to this definition">¶</a></dt>
+<dd><p>Decodes a number from a sequence of bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>encoded_number</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The sequence of bytes to decode.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The decoded number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eolib.data.encode_string">
+<span class="sig-name descname"><span class="pre">encode_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/string_encoding_utils.html#encode_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.encode_string" title="Link to this definition">¶</a></dt>
+<dd><p>Encodes a string by inverting the bytes and then reversing them.</p>
+<p>This is an in-place operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytearray" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytearray</span></code></a>) – The byte array to encode.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eolib.data.decode_string">
+<span class="sig-name descname"><span class="pre">decode_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eolib/data/string_encoding_utils.html#decode_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eolib.data.decode_string" title="Link to this definition">¶</a></dt>
+<dd><p>Decodes a string by reversing the bytes and then inverting them.</p>
+<p>This is an in-place operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bytes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytearray" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytearray</span></code></a>) – The byte array to decode.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="eolib.encrypt.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">eolib.encrypt</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="eolib.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">eolib</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Jonah Jeleniewski
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/cirras/eolib-python" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+                    0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01
+                    1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+                    0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27
+                    2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+                    1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2
+                    0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">eolib.data</a><ul>
+<li><a class="reference internal" href="#eolib.data.EoReader"><code class="docutils literal notranslate"><span class="pre">EoReader</span></code></a><ul>
+<li><a class="reference internal" href="#eolib.data.EoReader.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.slice"><code class="docutils literal notranslate"><span class="pre">slice()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.get_byte"><code class="docutils literal notranslate"><span class="pre">get_byte()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.get_bytes"><code class="docutils literal notranslate"><span class="pre">get_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.get_char"><code class="docutils literal notranslate"><span class="pre">get_char()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.get_short"><code class="docutils literal notranslate"><span class="pre">get_short()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.get_three"><code class="docutils literal notranslate"><span class="pre">get_three()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.get_int"><code class="docutils literal notranslate"><span class="pre">get_int()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.get_string"><code class="docutils literal notranslate"><span class="pre">get_string()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.get_fixed_string"><code class="docutils literal notranslate"><span class="pre">get_fixed_string()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.get_encoded_string"><code class="docutils literal notranslate"><span class="pre">get_encoded_string()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.get_fixed_encoded_string"><code class="docutils literal notranslate"><span class="pre">get_fixed_encoded_string()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.chunked_reading_mode"><code class="docutils literal notranslate"><span class="pre">chunked_reading_mode</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.remaining"><code class="docutils literal notranslate"><span class="pre">remaining</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.next_chunk"><code class="docutils literal notranslate"><span class="pre">next_chunk()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoReader.position"><code class="docutils literal notranslate"><span class="pre">position</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#eolib.data.EoWriter"><code class="docutils literal notranslate"><span class="pre">EoWriter</span></code></a><ul>
+<li><a class="reference internal" href="#eolib.data.EoWriter.__init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoWriter.add_byte"><code class="docutils literal notranslate"><span class="pre">add_byte()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoWriter.add_bytes"><code class="docutils literal notranslate"><span class="pre">add_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoWriter.add_char"><code class="docutils literal notranslate"><span class="pre">add_char()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoWriter.add_short"><code class="docutils literal notranslate"><span class="pre">add_short()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoWriter.add_three"><code class="docutils literal notranslate"><span class="pre">add_three()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoWriter.add_int"><code class="docutils literal notranslate"><span class="pre">add_int()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoWriter.add_string"><code class="docutils literal notranslate"><span class="pre">add_string()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoWriter.add_fixed_string"><code class="docutils literal notranslate"><span class="pre">add_fixed_string()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoWriter.add_encoded_string"><code class="docutils literal notranslate"><span class="pre">add_encoded_string()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoWriter.add_fixed_encoded_string"><code class="docutils literal notranslate"><span class="pre">add_fixed_encoded_string()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoWriter.string_sanitization_mode"><code class="docutils literal notranslate"><span class="pre">string_sanitization_mode</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.EoWriter.to_bytearray"><code class="docutils literal notranslate"><span class="pre">to_bytearray()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#eolib.data.encode_number"><code class="docutils literal notranslate"><span class="pre">encode_number()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.decode_number"><code class="docutils literal notranslate"><span class="pre">decode_number()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.encode_string"><code class="docutils literal notranslate"><span class="pre">encode_string()</span></code></a></li>
+<li><a class="reference internal" href="#eolib.data.decode_string"><code class="docutils literal notranslate"><span class="pre">decode_string()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=f0042b85"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/version-picker.js?v=93b62869"></script>
+    <script src="../_static/sidebar-nav.js?v=983aa642"></script>
+    </body>
+</html>
