@@ -9,6 +9,12 @@ A core Python library for writing applications related to Endless Online.
 
 ## Installation
 
+### uv
+```console
+uv add eolib
+```
+
+### pip
 ```console
 pip install eolib
 ```
@@ -33,6 +39,10 @@ Utilities:
 - String encoding
 - Data encryption
 - Packet sequencer
+
+## Documentation
+
+https://cirras.github.io/eolib-python/
 
 ## Development
 
